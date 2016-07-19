@@ -484,6 +484,11 @@ define(['angular', 'settings', 'lodash', 'jquery'], function (_angular, adminApp
         }, data));
       }
 
+      Identify3D.prototype.getDownloadUri = function(fileData){
+        return this.serverUri + 'tmp/' + fileData.url
+      }
+
+
       Identify3D.prototype.get3DOrderForm = function(designId){
 
         var deferred = $q.defer();

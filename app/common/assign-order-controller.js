@@ -3,7 +3,7 @@
 
 define([], function () {
 
-  function AssignOrderController($q, $scope, $rootScope, $stateParams, $state, $modal, $aside, $modalInstance, Identify3D, orderData, devicesData, confirmationDialogService, orderFormData){
+  function AssignOrderController($window, $q, $scope, $rootScope, $stateParams, $state, $modal, $aside, $modalInstance, Identify3D, orderData, devicesData, confirmationDialogService, orderFormData){
 
     var self = this;
 
@@ -90,15 +90,22 @@ define([], function () {
       var blockingUI = $q.defer();
       self.myPromise = blockingUI.promise;
 
-      function unblockAndNavigateToParentWithReload(){
+      function unblockAndNavigateToParentWithReload(fileData){
         blockingUI.resolve();
         $state.go("^", $stateParams, {reload: true});
+
+        setTimeout(function() {
+          var dlUri = Identify3D.getDownloadUri(fileData);
+          $window.location.href = dlUri;
+        }, 1000);
+
+
       }
 
-      Identify3D.doBureauSubmitJob(self.order.designId, self.selectedPrinter.deviceId, self.selectedPrinter.url, self.orderForm)
-      .then(function(user){
+      Identify3D.doBureauSaveJob(self.order.designId, self.selectedPrinter.deviceId, self.selectedPrinter.url, self.orderForm)
+      .then(function(fileData){
 
-        unblockAndNavigateToParentWithReload();
+        unblockAndNavigateToParentWithReload(fileData);
 
       },function(locationMeta){
 
@@ -174,5 +181,5 @@ define([], function () {
     }
   }
 
-  return {'AssignOrderController': ['$q','$scope', '$rootScope', '$stateParams', '$state', '$modal', '$aside', '$modalInstance', 'Identify3DObject', 'orderData', 'devicesData', 'confirmationDialogService', 'orderFormData', AssignOrderController]};
+  return {'AssignOrderController': ['$window', '$q','$scope', '$rootScope', '$stateParams', '$state', '$modal', '$aside', '$modalInstance', 'Identify3DObject', 'orderData', 'devicesData', 'confirmationDialogService', 'orderFormData', AssignOrderController]};
 });

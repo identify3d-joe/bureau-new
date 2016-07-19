@@ -1,0 +1,62 @@
+$wf-brand-sky:             #4A90E2 !default;
+
+* {
+  @include box-sizing(border-box);
+}
+
+body {
+  background-color: #fff;
+}
+
+.bible {
+  margin-top:26px;
+  margin-right:22px;
+  width: 160px;
+}
+
+.master-content {
+  padding-top: 140px;
+}
+
+.panel-title {
+  font-size: 26px;
+}
+
+.label,
+.badge {
+  font-size: 14px;
+}
+
+.inline-photo {
+  max-width:50px;
+  max-height:50px;
+}
+
+.navbar-form {
+  float: right;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.tc-chart-js-legend {
+  list-style-type: none;
+  padding-left: 0px;
+}
+.tc-chart-js-legend li {
+  display: block;
+  float: left;
+  clear:both;
+  padding:10px;
+}
+.tc-chart-js-legend li span {
+  width:25px;
+  height:25px;
+  display:block;
+  float:left;
+  margin-right:10px;
+}
+
+
+.btn {
+  // border-radius: 10px;
+}

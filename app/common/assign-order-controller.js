@@ -10,11 +10,9 @@ define([], function () {
     $scope.isArray = angular.isArray;
     $scope.isObject = angular.isObject;
     $scope.extend = angular.extend;
+    $scope.copy = angular.copy;
 
     self.order = angular.extend({}, orderData);
-
-    self.prescription = angular.extend({}, orderData);
-    self.prescription.patient = angular.extend({}, orderData.patient);
 
     self.printers = devicesData;
 
@@ -35,6 +33,10 @@ define([], function () {
     };
 
     self.printJob = function(Lform){
+
+      console.log(self.orderForm)
+      return
+
 
       if(Lform.$invalid) {
 

@@ -255,8 +255,8 @@
                                     <input type="text" class="form-control" datepicker-popup="MM / dd / yyyy" datepicker-mode="year" ng-model="assignOrder.orderForm.BusinessRules.expirationDate" name="expirationDate" is-open="assignOrder.isDOBCalOpen" placeholder="test" close-text="Close"
                                     />
                                     <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="assignOrder.openDOBCal($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                  </span>
+                                      <button type="button" class="btn btn-default" ng-click="assignOrder.openDOBCal($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
                                 </p>
 
                             </div>
@@ -278,278 +278,270 @@
 
                     </div>
 
-                    <!--
-                    <div class="row">
-
-                      <div class="col-md-10">
-
-                        <div class="form-group required">
-                          <label for="exampleInputEmail1">Material*</label>
-
-                          <div  class="btn-group input-group" dropdown>
-                            <button type="button" class="btn btn-default dropdown-toggle" ng-class="{ 'btn-danger' : Lform.material.$invalid}" dropdown-toggle ng-disabled="false">
-                              {{assignOrder.processedPrescription.material ? assignOrder.processedPrescription.material : 'Select Material' }} <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                              <li>
-                                <a href ng-click="assignOrder.processedPrescription.material='PLA'">PLA</a>
-                              </li>
-                              <li>
-                                <a href ng-click="assignOrder.processedPrescription.material='ABS'">ABS</a>
-                              </li>
-                              <li>
-                                <a href ng-click="assignOrder.processedPrescription.material='PET+'">PET</a>
-                              </li>
-
-                            </ul>
-                            <input type="hidden" name="material" required ng-model="assignOrder.processedPrescription.material">
-                          </div>
-                        </div>
-
-                      </div>
-
-                    </div>
-                    -->
 
                     <!--  -->
 
                     <span ng-repeat="(key, arr) in assignOrder.orderForm.DesignRules" ng-if="isArray(arr) && arr.length > 0">
 
-                    <!--
-                    <div class="well well-sm page-header">
-                      <h4>
-                        <span ng-if="isArray(arr) && arr.length > 0" class="label label-default">{{arr.length}}</span> {{key | uppercase}}</h4>
-                    </div>
-                    -->
 
-                    <!--
-                    <div ng-if="!arr || !isArray(arr) || arr.length < 1" class="alert alert-warning" role="alert">
-                      <p>NO OPTIONS FOUND FOR {{key | uppercase}}.</p>
-                    </div>
-                    -->
-
-                  <!--
-                  <div class="form-group required">
-                    <label for="exampleInputEmail1">{{dynamicField.name}}{{dynamicField.isRequired ? "*" : ""}}</label>
-
-                  <div  class="btn-group input-group" dropdown>
-                      <button type="button" class="btn btn-default dropdown-toggle" ng-class="{ 'btn-danger' : Lform.material.$invalid}" dropdown-toggle ng-disabled="!dynamicField.isEditable">
-                        {{assignOrder.material ? assignOrder.material : 'Select Material' }} <span class="caret"></span>
-                      </button>
-                      <ul class="dropdown-menu" role="menu">
-                        <li>
-                          <a href ng-click="assignOrder.material='PLA'">PLA</a>
-                        </li>
-                        <li>
-                          <a href ng-click="assignOrder.material='ABS'">ABS</a>
-                        </li>
-                        <li>
-                          <a href ng-click="assignOrder.material='PET+'">PET</a>
-                        </li>
-
-                      </ul>
-                      <input type="hidden" name="material" required ng-model="assignOrder.material">
-                    </div>
-                  </div>
-                  -->
-
-                <div ng-repeat="dynamicField in arr track by $index" class="row">
-
-                    <!--
-
-                    -->
-
-                    <div ng-if="isObject(dynamicField.value) && dynamicField.value.range" class="col-md-12">
+                      <div class="well well-sm page-header">
+                        <h4>
+                          <span class="label label-default">{{arr.length}}</span> {{key | uppercase}}
+                        </h4>
+                      </div>
 
 
-                        <div class="row">
+                      <div ng-if="!arr || !isArray(arr) || arr.length < 1" class="alert alert-warning" role="alert">
+                        <p>NO OPTIONS FOUND FOR {{key | uppercase}}.</p>
+                      </div>
 
 
-                            <div class="col-md-12">
+                      <div
+                        ng-repeat="dynamicField in arr track by $index"
+                        ng-init="dynamicField._value = copy(dynamicField.value)"
+                        class="row"
+                      >
 
-                                <div class="form-group danger required">
+                        <!--
+                          CHOICE
+                        -->
 
-                                    <label for="exampleInputEmail1">
-                                        <!-- <span class="label label-xs label-default">{{$index+1}}</span> -->
-                                        {{dynamicField.name}}{{dynamicField.isRequired ? "*" : ""}}
-                                    </label>
+                        <div
+                          ng-if="isObject(dynamicField._value) && dynamicField._value.choice"
+                          class="col-md-12"
+                        >
+                            <div class="form-group required">
+                                <label for="exampleInputEmail1">
+                                    <!-- <span class="label label-xs label-default">{{$index+1}}</span>  -->
+                                    {{dynamicField.name}}{{dynamicField.isRequired ? "*" : ""}}
+                                </label>
 
-                                    <div ng-init="dynamicField.$fieldType='VALUE'" class="row">
+                                <div class="btn-group input-group" dropdown>
+                                    <button type="button" class="btn btn-default dropdown-toggle" ng-class="{ 'btn-danger' : Lform.{{key+$index}}.$invalid}" dropdown-toggle ng-required="dynamicField.isRequired" ng-disabled="!dynamicField.isEditable">
+                                        {{dynamicField.value.value || 'Select' }} <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li ng-repeat="choice in dynamicField.value.choice.choice">
+                                            <a href ng-click="dynamicField.value.value=choice">{{choice}}</a>
+                                        </li>
+                                    </ul>
+                                    <input type="hidden" name="{{key+$index}}" required ng-model="dynamicField.value.value">
+                                </div>
+                            </div>
 
-                                        <div class="col-md-3">
+
+                        </div>
+
+                        <!--
+                          BOOLEAN
+                        -->
+
+                        <div
+                          ng-if="dynamicField.dataType === 'boolean'"
+                          class="col-md-10"
+                        >
+
+                            <div class="form-group required">
+                                <label for="exampleInputEmail1">
+                                    <!-- <span class="label label-xs label-default">{{$index+1}}</span>  -->
+                                    {{dynamicField.name}}{{dynamicField.isRequired ? "*" : ""}}
+                                </label>
+
+                                <div class="btn-group input-group" dropdown>
+                                    <button type="button" class="btn btn-default dropdown-toggle" ng-class="{ 'btn-danger' : Lform.{{key+$index}}.$invalid}" dropdown-toggle ng-required="dynamicField.isRequired" ng-disabled="!dynamicField.isEditable">
+                                        {{dynamicField.value.value === undefined ? 'Select' : (dynamicField.value.value === true ? 'YES' : 'NO') }} <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>
+                                            <a href ng-click="dynamicField.value.value=true">YES</a>
+                                        </li>
+                                        <li>
+                                            <a href ng-click="dynamicField.value.value=false">NO</a>
+                                        </li>
+                                    </ul>
+                                    <input
+                                      type="hidden"
+                                      name="{{key+$index}}"
+                                      required
+                                      ng-model="dynamicField.value.value"
+                                    >
+                                </div>
+                            </div>
 
 
-                                            <div class="btn-group input-group" dropdown>
-                                                <button type="button" class="btn btn-default dropdown-toggle" ng-class="{ 'btn-primary' : Lform.material.$invalid}" dropdown-toggle ng-disabled="false">
-                                                    {{dynamicField.$fieldType }} <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu" role="menu">
-                                                    <li>
-                                                        <a href ng-click="dynamicField.$fieldType='VALUE'">VALUE</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href ng-click="dynamicField.$fieldType='RANGE'">RANGE</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                        </div>
 
-                                        </div>
+                        <!--
+                          CONFIGURABLE
+                        -->
 
-                                        <div class="col-md-9" ng-if="dynamicField.$fieldType === 'VALUE'" ng-init="dynamicField.value.$range=extend({}, dynamicField.value.range)">
-                                            <rzslider ng-init="dynamicField.value.value || (dynamicField.value.value=dynamicField.value.range.min)" rz-slider-model="dynamicField.value.value" rz-slider-precision="0.1" rz-slider-step="1" rz-slider-floor="dynamicField.value.$range.min" rz-slider-ceil="dynamicField.value.$range.max"
-                                                rz-slider-hide-limit-labels="true">
-                                            </rzslider>
-                                        </div>
-                                        <div class="col-md-9" ng-if="dynamicField.$fieldType === 'RANGE'">
+                        <div
+                          ng-if="dynamicField.dataType !== 'boolean' && !dynamicField._value.choice"
+                          class="col-md-12"
+                        >
 
-                                            <rzslider rz-slider-model="dynamicField.value.range.min" rz-slider-high="dynamicField.value.range.max" rz-slider-precision="0.1" rz-slider-step="1" rz-slider-floor="dynamicField.value.$range.min" rz-slider-ceil="dynamicField.value.$range.max" rz-slider-hide-limit-labels="true">
-                                            </rzslider>
+                            <label for="exampleInputEmail1">
+                                <!-- <span class="label label-xs label-default">{{$index+1}}</span> -->
+                                {{dynamicField.name}}{{dynamicField.isRequired ? "*" : ""}}
+                            </label>
 
-                                        </div>
+                            <div class="row">
 
+                                <div
+                                  ng-init="dynamicField._fieldType = dynamicField._value.choice ? 'CHOICE' : (dynamicField._value.range ? 'RANGE' : 'VALUE')"
+                                  class="col-md-3"
+                                >
+                                    <div class="btn-group input-group" dropdown>
+                                        <button
+                                          type="button"
+                                          class="btn btn-default dropdown-toggle"
+                                          dropdown-toggle
+                                          ng-disabled="!dynamicField.isEditable"
+                                        >
+                                            {{dynamicField._fieldType}} <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                <a href ng-click="dynamicField._fieldType='VALUE'">VALUE</a>
+                                            </li>
+                                            <li>
+                                                <a href ng-click="dynamicField._fieldType='RANGE'">RANGE</a>
+                                            </li>
+                                            <!-- <li>
+                                                <a href ng-click="dynamicField._fieldType='CHOICE'">CHOICE</a>
+                                            </li> -->
+                                        </ul>
                                     </div>
 
                                 </div>
 
+                                <!-- UNDEFINED RANGE -->
+                                <span
+                                  ng-if="dynamicField._fieldType === 'RANGE' && (!dynamicField._value.range.min || !dynamicField._value.range.max)"
+                                >
+                                  <div class="col-md-4">
+                                      <div class="form-group" ng-class="{ 'has-error' : Lform.{{key+$index+'low'}}.$invalid}">
+                                          <label for="exampleInputEmail1">
+                                              Low{{dynamicField.isRequired ? "*" : ""}}
+                                              <span
+                                                ng-show="dynamicField._value.range.min"
+                                                class="badge"
+                                              >min {{dynamicField._value.range.min}}</span>
+                                          </label>
+                                          <input
+                                            type="text"
+                                            class="form-control"
+                                            id="exampleInputEmail1"
+                                            placeholder="Low"
+                                            name="{{key+$index+'low'}}"
+                                            ng-required="dynamicField.isRequired"
+                                            ng-model="dynamicField.value.range.min"
+                                            ng-disabled="!dynamicField.isEditable"
+                                          >
+                                      </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                      <div class="form-group" ng-class="{ 'has-error' : Lform.{{key+$index+'high'}}.$invalid}">
+                                          <label for="exampleInputEmail1">
+                                              High{{dynamicField.isRequired ? "*" : ""}}
+                                              <span
+                                                ng-show="dynamicField._value.range.max"
+                                                class="badge"
+                                              >max {{dynamicField._value.range.max}}</span>
+                                          </label>
+                                          <input
+                                            type="text"
+                                            class="form-control"
+                                            id="exampleInputEmail1"
+                                            placeholder="High"
+                                            name="{{key+$index+'high'}}"
+                                            ng-required="dynamicField.isRequired"
+                                            ng-model="dynamicField.value.range.max"
+                                            ng-disabled="!dynamicField.isEditable"
+                                          >
+                                      </div>
+                                  </div>
+                                </span>
+                                <!-- PREDEFINED RANGE -->
+
+                                <span
+                                  ng-if="dynamicField._fieldType === 'RANGE' && dynamicField._value.range.min && dynamicField._value.range.max"
+                                >
+
+                                  <div class="col-md-9">
+
+                                      <rzslider
+                                        rz-slider-model="dynamicField.value.range.min"
+                                        rz-slider-high="dynamicField.value.range.max"
+                                        rz-slider-precision="0.1"
+                                        rz-slider-step="1"
+                                        rz-slider-floor="dynamicField._value.range.min"
+                                        rz-slider-ceil="dynamicField._value.range.max"
+                                        rz-slider-hide-limit-labels="true">
+                                      </rzslider>
+
+                                  </div>
+
+                                </span>
+
+                                <!-- UNDEFINED VALUE -->
+
+                                <span
+                                  ng-if="dynamicField._fieldType === 'VALUE' && (!dynamicField._value.value || dynamicField.dataType === 'string')"
+                                >
+
+                                  <div class="col-md-4">
+                                      <div class="form-group" ng-class="{ 'has-error' : Lform.{{key+$index}}.$invalid}">
+                                          <label for="exampleInputEmail1">
+                                              Value{{dynamicField.isRequired ? "*" : ""}}
+                                          </label>
+                                          <input
+                                            type="text"
+                                            class="form-control"
+                                            id="exampleInputEmail1"
+                                            placeholder="Value"
+                                            name="{{key+$index}}"
+                                            ng-required="dynamicField.isRequired"
+                                            ng-model="dynamicField.value.value"
+                                            ng-disabled="!dynamicField.isEditable"
+                                          >
+                                      </div>
+                                  </div>
+                                </span>
+
+                                <!-- PREDEFINED VALUE -->
+                                <span
+                                  ng-if="dynamicField.dataType !== 'string' && dynamicField._fieldType === 'VALUE' && dynamicField._value.value"
+                                >
+                                  <div class="col-md-9">
+                                      <rzslider
+                                        rz-slider-model="dynamicField.value.value"
+                                        rz-slider-precision="0.1"
+                                        rz-slider-step="1"
+                                        rz-slider-floor="dynamicField.value.$range.min"
+                                        rz-slider-ceil="dynamicField.value.$range.max"
+                                        rz-slider-hide-limit-labels="true">
+                                      </rzslider>
+                                  </div>
+                                </span>
+
+                                <!-- CHOICE -->
+                                <div ng-if="dynamicField._fieldType === 'CHOICE'" class="col-md-4">
+                                    <div class="form-group" ng-class="{ 'has-error' : Lform.{{key+$index}}.$invalid}">
+                                        <label for="exampleInputEmail1">
+                                            Choice{{dynamicField.isRequired ? "*" : ""}}
+                                        </label>
+                                    </div>
+                                </div>
+
+
+
                             </div>
-
-
 
                         </div>
 
-                    </div>
 
-                    <!--
-
-                    -->
-
-                    <div ng-if="isObject(dynamicField.value) && dynamicField.value.choice" class="col-md-12">
-
-                        <div class="form-group required">
-                            <label for="exampleInputEmail1">
-                                <!-- <span class="label label-xs label-default">{{$index+1}}</span>  -->
-                                {{dynamicField.name}}{{dynamicField.isRequired ? "*" : ""}}
-                            </label>
-
-                            <div class="btn-group input-group" dropdown>
-                                <button type="button" class="btn btn-default dropdown-toggle" ng-class="{ 'btn-danger' : Lform.{{key}}.$invalid}" dropdown-toggle ng-required="dynamicField.isRequired" ng-disabled="!dynamicField.isEditable">
-                                    {{dynamicField.value.value || 'Select' }} <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li ng-repeat="choice in dynamicField.value.choice.choice">
-                                        <a href ng-click="dynamicField.value.value=choice">{{choice}}</a>
-                                    </li>
-                                </ul>
-                                <input type="hidden" name="{{key}}" required ng-model="dynamicField.value.value">
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                    <!--
-
-                    -->
-
-                    <div ng-if="(!isObject(dynamicField.value) || dynamicField.value.value) && !dynamicField.value.range && (dynamicField.dataType === 'decimal' || dynamicField.dataType === 'integer' || dynamicField.dataType === 'string')" class="col-md-12">
-
-                        <label for="exampleInputEmail1">
-                            <!-- <span class="label label-xs label-default">{{$index+1}}</span> -->
-                            {{dynamicField.name}}{{dynamicField.isRequired ? "*" : ""}}
-                        </label>
-
-                        <div class="row">
-
-                            <div ng-init="dynamicField.$fieldType='VALUE'" class="col-md-3">
-
-
-                                <div class="btn-group input-group" dropdown>
-                                    <button type="button" class="btn btn-default dropdown-toggle" ng-class="{ 'btn-primary' : Lform.material.$invalid}" dropdown-toggle ng-disabled="false">
-                                        {{dynamicField.$fieldType}} <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li>
-                                            <a href ng-click="dynamicField.$fieldType='VALUE'">VALUE</a>
-                                        </li>
-                                        <li>
-                                            <a href ng-click="dynamicField.$fieldType='RANGE'">RANGE</a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                            </div>
-
-                            <!-- RANGE -->
-                            <div ng-if="dynamicField.$fieldType === 'RANGE'" class="col-md-4">
-                                <div class="form-group" ng-class="{ 'has-error' : Lform.{{key}}.$invalid}">
-                                    <label for="exampleInputEmail1">
-                                        <!-- <span class="label label-xs label-default">{{$index+1}}</span>  -->
-                                        Low{{dynamicField.isRequired ? "*" : ""}}
-                                    </label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Low" name="{{key}}" ng-required="dynamicField.isRequired" ng-model="dynamicField.value.range.min" ng-disabled="!dynamicField.isEditable">
-                                </div>
-                            </div>
-                            <div ng-if="dynamicField.$fieldType === 'RANGE'" class="col-md-4">
-                                <div class="form-group" ng-class="{ 'has-error' : Lform.{{key}}.$invalid}">
-                                    <label for="exampleInputEmail1">
-                                        <!-- <span class="label label-xs label-default">{{$index+1}}</span>  -->
-                                        High{{dynamicField.isRequired ? "*" : ""}}
-                                    </label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="High" name="{{key}}" ng-required="dynamicField.isRequired" ng-model="dynamicField.value.range.max" ng-disabled="!dynamicField.isEditable">
-                                </div>
-                            </div>
-                            <!-- VALUE -->
-                            <div ng-if="dynamicField.$fieldType === 'VALUE'" class="col-md-4">
-                                <div class="form-group" ng-class="{ 'has-error' : Lform.{{key}}.$invalid}">
-                                    <label for="exampleInputEmail1">
-                                        <!-- <span class="label label-xs label-default">{{$index+1}}</span>  -->
-                                        Value{{dynamicField.isRequired ? "*" : ""}}
-                                    </label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Value" name="{{key}}" ng-required="dynamicField.isRequired" ng-model="dynamicField.value.value" ng-disabled="!dynamicField.isEditable">
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                    </div>
-
-                    <!--
-
-                    -->
-
-                    <div ng-if="dynamicField.dataType === 'boolean'" class="col-md-10">
-
-                        <div class="form-group required">
-                            <label for="exampleInputEmail1">
-                                <!-- <span class="label label-xs label-default">{{$index+1}}</span>  -->
-                                {{dynamicField.name}}{{dynamicField.isRequired ? "*" : ""}}
-                            </label>
-
-                            <div class="btn-group input-group" dropdown>
-                                <button type="button" class="btn btn-default dropdown-toggle" ng-class="{ 'btn-danger' : Lform.{{key}}.$invalid}" dropdown-toggle ng-required="dynamicField.isRequired" ng-disabled="!dynamicField.isEditable">
-                                    {{dynamicField.value.value ? 'YES' : 'NO' }} <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href ng-click="dynamicField.value.value=true">YES</a>
-                                    </li>
-                                    <li>
-                                        <a href ng-click="dynamicField.value.value=false">NO</a>
-                                    </li>
-                                </ul>
-                                <input type="hidden" name="{{key}}" required ng-init="dynamicField.value.value=!!dynamicField.value.value" ng-model="dynamicField.value.value">
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                    <!--
-
-                    -->
-
-                </div>
+                      </div>
 
                 </span>
 

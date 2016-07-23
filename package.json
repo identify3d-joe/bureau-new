@@ -5,7 +5,8 @@
   "version": "0.1.0",
   "homepage": "https://www.identify3d.com",
   "scripts": {
-    "start": "node admin-app-server-http.js"
+    "start": "node admin-app-server-http.js",
+    "postinstall": "./node_modules/.bin/bower install && ./node_modules/.bin/gulp sass"
   },
   "repository": {
     "type": "git",

@@ -3,7 +3,7 @@
 
 define([], function () {
 
-  function authInterceptorFactory($q, sessionStorageService, $injector) {
+  function authInterceptorFactory($q, sessionStorageService, $injector, $cookies, $cookieStore) {
 
     return {
       request: function (config) {
@@ -18,6 +18,9 @@ define([], function () {
           config.headers.Authorization = 'Basic ' + token;
         }
 
+        // var c = $cookies;
+        $cookieStore.remove('JSESSIONID');
+
         return config;
       },
       responseError: function (rejection) {
@@ -30,5 +33,5 @@ define([], function () {
 
   }
 
-  return {'authInterceptorService': ['$q', 'sessionStorageService', '$injector', authInterceptorFactory]};
+  return {'authInterceptorService': ['$q', 'sessionStorageService', '$injector', '$cookies', '$cookieStore', authInterceptorFactory]};
 });

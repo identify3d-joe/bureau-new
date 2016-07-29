@@ -10,6 +10,7 @@ define([
 	'angular-ui-router',
 	'angular-ui-bootstrap',
 	'angular-ui-utils',
+	'angular-cookies',
 
 	'angular-slider',
 	'ng-slider',
@@ -62,6 +63,7 @@ define([
 		_uiRouter,
 		_uiBootstrap,
 		_uiUtils,
+		_ngCookies,
 
 		_angularSlider,
 		_ngSlider,
@@ -167,6 +169,7 @@ define([
 		_uiRouter.moduleId,
 		_uiBootstrap.moduleId,
 		_uiUtils.moduleId,
+		_ngCookies.moduleId,
 		_angularSlider.moduleId,
 		_rzSlider.moduleId,
 		_ngAside.moduleId,
@@ -178,7 +181,6 @@ define([
 		_ngChart.moduleId,
 		'angularFileUpload'
 		];
-
 
 		var module = angular.module('wf.core', dependencies);
 

@@ -1,6 +1,12 @@
 /**
+<<<<<<< HEAD
  * @license text 2.0.15 Copyright jQuery Foundation and other contributors.
  * Released under MIT license, http://github.com/requirejs/text/LICENSE
+=======
+ * @license RequireJS text 2.0.14 Copyright (c) 2010-2014, The Dojo Foundation All Rights Reserved.
+ * Available via the MIT or new BSD license.
+ * see: http://github.com/requirejs/text for details
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
  */
 /*jslint regexp: true */
 /*global require, XMLHttpRequest, ActiveXObject,
@@ -21,6 +27,7 @@ define(['module'], function (module) {
         buildMap = {},
         masterConfig = (module.config && module.config()) || {};
 
+<<<<<<< HEAD
     function useDefault(value, defaultValue) {
         return value === undefined || value === '' ? defaultValue : value;
     }
@@ -41,6 +48,10 @@ define(['module'], function (module) {
 
     text = {
         version: '2.0.15',
+=======
+    text = {
+        version: '2.0.14',
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 
         strip: function (content) {
             //Strips <?xml ...?> declarations so that external SVG and XML
@@ -158,7 +169,11 @@ define(['module'], function (module) {
 
             return (!uProtocol || uProtocol === protocol) &&
                    (!uHostName || uHostName.toLowerCase() === hostname.toLowerCase()) &&
+<<<<<<< HEAD
                    ((!uPort && !uHostName) || isSamePort(uProtocol, uPort, protocol, port));
+=======
+                   ((!uPort && !uHostName) || uPort === port);
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
         },
 
         finishLoad: function (name, strip, content, onLoad) {

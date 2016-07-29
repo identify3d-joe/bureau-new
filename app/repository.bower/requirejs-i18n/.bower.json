@@ -8,7 +8,11 @@
     "tag": "2.0.4",
     "commit": "3a472e9b7989c191396d9b527e782ffd376fb5d2"
   },
+<<<<<<< HEAD
   "_source": "https://github.com/requirejs/i18n.git",
+=======
+  "_source": "git://github.com/requirejs/i18n.git",
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
   "_target": "2.0.4",
   "_originalSource": "requirejs-i18n"
 }

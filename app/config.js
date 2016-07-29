@@ -10,6 +10,7 @@ require.config({
 		'angular': 'repository.bower/angular/angular',
 		'angular-resource': 'repository.bower/angular-resource/angular-resource',
 		'angular-sanitize': 'repository.bower/angular-sanitize/angular-sanitize',
+		'angular-cookies': 'repository.local/angular-cookies/angular-cookies',
 		'angular-animate': 'repository.bower/angular-animate/angular-animate',
 		'angular-ui-router': 'repository.bower/angular-ui-router/release/angular-ui-router',
 		'angular-loading-bar': 'repository.bower/angular-loading-bar/build/loading-bar',
@@ -60,6 +61,13 @@ require.config({
 			exports: undefined,
 			init: function angularModuleInfo() {
 				return { moduleId: 'ngSanitize'};
+			}
+		},
+		'angular-cookies': {
+			deps: ['angular'],
+			exports: undefined,
+			init: function angularModuleInfo() {
+				return { moduleId: 'ngCookies'};
 			}
 		},
 		'angular-animate': {

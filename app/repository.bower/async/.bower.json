@@ -8,7 +8,11 @@
     "tag": "0.9.0",
     "commit": "5f62a1bcdda2bc961797ecac8c683128dbdf0aaf"
   },
+<<<<<<< HEAD
   "_source": "https://github.com/caolan/async.git",
+=======
+  "_source": "git://github.com/caolan/async.git",
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
   "_target": "0.9.0",
   "_originalSource": "async"
 }

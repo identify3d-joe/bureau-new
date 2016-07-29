@@ -13,7 +13,11 @@
     "tag": "0.3.0",
     "commit": "5bc2e5f62569e9026159b6e6e37949e047035ca7"
   },
+<<<<<<< HEAD
   "_source": "https://github.com/jrburke/almond.git",
+=======
+  "_source": "git://github.com/jrburke/almond.git",
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
   "_target": "0.3.0",
   "_originalSource": "almond"
 }

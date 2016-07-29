@@ -17,7 +17,11 @@
     "tag": "3.0.2",
     "commit": "2334aed3efee9f4dd2297c4e6f4c0021b3279c7a"
   },
+<<<<<<< HEAD
   "_source": "https://github.com/necolas/normalize.css.git",
+=======
+  "_source": "git://github.com/necolas/normalize.css.git",
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
   "_target": "3.0.2",
   "_originalSource": "normalize-css"
 }

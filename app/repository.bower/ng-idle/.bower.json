@@ -35,7 +35,11 @@
     "tag": "0.3.5",
     "commit": "a935f3bd0cfd4ede4124cd58359520925c0efbb9"
   },
+<<<<<<< HEAD
   "_source": "https://github.com/HackedByChinese/ng-idle.git",
+=======
+  "_source": "git://github.com/HackedByChinese/ng-idle.git",
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
   "_target": "0.3.5",
   "_originalSource": "ng-idle"
 }

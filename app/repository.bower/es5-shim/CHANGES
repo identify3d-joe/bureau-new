@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 4.5.9
   - [Fix] parseInt and parseFloat should both accept null/undefined (#402)
   - [Tests] up to `node` `v6.2`
@@ -78,6 +79,8 @@
 4.3.2
   - [shim: fix] use `Array#slice`, not `String#slice`, on `String#split` output (#380)
 
+=======
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 4.3.1
   - [Fix] `String#split`: revert part of dcce96ae21185a69d2d40e67416e7496b73e8e47 which broke in older browsers (#342)
   - [Dev Deps] update `eslint`, `@ljharb/eslint-config`, `jscs`
@@ -105,16 +108,22 @@
   - [Tests] on `node` `v5.0`
   - [Tests] fix npm upgrades for older nodes
 
+<<<<<<< HEAD
 4.2.1
   - [shim: fix] use `Array#slice`, not `String#slice`, on `String#split` output (#380)
 
+=======
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 4.2.0
   - [shim: new] Overwrite `String#lastIndexOf` in IE 9, 10, 11, and Edge, so it has proper unicode support.
   - [Dev Deps] update `eslint`, `jscs`
 
+<<<<<<< HEAD
 4.1.16
   - [shim: fix] use `Array#slice`, not `String#slice`, on `String#split` output (#380)
 
+=======
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 4.1.15
   - [shim: fix] new Date + Date.parse: Fix a Safari 8 & 9 bug where the `ms` arg is treated as a signed instead of unsigned int (#329)
   - [shim: fix] add 'frame' to blacklisted keys (#330)

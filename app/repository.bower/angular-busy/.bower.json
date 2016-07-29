@@ -36,7 +36,11 @@
     "tag": "v4.1.2",
     "commit": "1c82b599b1923f0b6f9ceb0255c782c3fe47aafe"
   },
+<<<<<<< HEAD
   "_source": "https://github.com/cgross/angular-busy.git",
+=======
+  "_source": "git://github.com/cgross/angular-busy.git",
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
   "_target": "4.1.2",
   "_originalSource": "angular-busy"
 }

@@ -5,7 +5,8 @@
   "version": "0.1.0",
   "homepage": "https://www.identify3d.com",
   "scripts": {
-    "start": "node admin-app-server-http.js"
+    "start": "node admin-app-server-http.js",
+    "postinstall": "./node_modules/.bin/gulp sass"
   },
   "repository": {
     "type": "git",
@@ -13,7 +14,7 @@
   },
   "dependencies": {
     "body-parser": "^1.6.5",
-    "bower": "1.4.1",
+    "bower": "1.7.9",
     "cookie-parser": "^1.3.2",
     "express": "~3.4.7",
     "express-http-proxy": "^0.6.0",

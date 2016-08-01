@@ -440,14 +440,12 @@ define(['angular', 'settings', 'lodash', 'jquery'], function (_angular, adminApp
               httpStatus: status
             }));
           } else {
-            debugger;
             deferred.reject(angular.extend(data || {}, {
               httpStatus: status
             }));
           }
 
         }).error(function(data, status, headers, config, statusText){
-          debugger;
           deferred.reject(angular.extend(data || {}, {
             httpStatus: status
           }));

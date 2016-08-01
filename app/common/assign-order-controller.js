@@ -64,22 +64,59 @@ define([], function () {
         $state.go("^", $stateParams, {reload: true});
       }
 
-      Identify3D.doBureauSubmitJob(self.order.designId, self.selectedPrinter.deviceId, self.selectedPrinter.url, self.orderForm)
-      .then(function(user){
+      var serverResponse = Identify3D.doBureauSubmitJob(self.order.designId, self.selectedPrinter.deviceId, self.selectedPrinter.url, self.orderForm)
+      // .then(function(user){
+      //
+      //   unblockAndNavigateToParentWithReload();
+      //
+      // },function(locationMeta){
+      //
+      //   confirmationDialogService('md', locationMeta.error, false, true)
+      //   .result
+      //   .then(function (userResponse) {
+      //     blockingUI.reject();
+      //   }, function (userResponse) {
+      //     //this should never happen i.e cancelButton=false
+      //   });
+      //
+      // });
 
-        unblockAndNavigateToParentWithReload();
 
-      },function(locationMeta){
+      var modalInstance = $modal.open({
+           animation: true,
+           controller: 'ValidatorModalController as validatorModal',
+           templateUrl: 'common/validator-modal.html',
+           size: 'md',
+           backdrop: 'static',
+           keyboard: false,
+           resolve: {
+             serverResponse: function () {
+               return {
+                 serverResponse: serverResponse,
+               };
+             }
+           }
+         });
 
-        confirmationDialogService('md', locationMeta.error, false, true)
-        .result
-        .then(function (userResponse) {
-          blockingUI.reject();
-        }, function (userResponse) {
-          //this should never happen i.e cancelButton=false
-        });
+       modalInstance.result.then(function (fileData) {
 
-      });
+         console.log('recevied ok')
+         blockingUI.resolve();
+
+         serverResponse.then(function(fileData){
+           console.log('downloading', fileData);
+           unblockAndNavigateToParentWithReload(fileData);
+           return fileData;
+         });
+
+       }, function (err) {
+         console.log('recevied dismiss')
+           blockingUI.reject();
+           return err;
+       });
+
+
+
 
     }
 

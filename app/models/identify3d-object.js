@@ -436,13 +436,21 @@ define(['angular', 'settings', 'lodash', 'jquery'], function (_angular, adminApp
         $http(req).success(function(data, status, headers, config, statusText){
 
           if(status === 200){
-            deferred.resolve(data);
+            deferred.resolve(angular.extend(data || {}, {
+              httpStatus: status
+            }));
           } else {
-            deferred.reject(data);
+            debugger;
+            deferred.reject(angular.extend(data || {}, {
+              httpStatus: status
+            }));
           }
 
         }).error(function(data, status, headers, config, statusText){
-          deferred.reject(data);
+          debugger;
+          deferred.reject(angular.extend(data || {}, {
+            httpStatus: status
+          }));
         });
 
         return deferred.promise;

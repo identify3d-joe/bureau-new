@@ -22,6 +22,17 @@ define([], function () {
 
     delete self.orderForm.DesignRules.deviceDefinitions;
 
+
+
+
+
+
+
+
+
+
+
+
     self.isEditing = !!orderData;
 
     self.ok = function(e) {
@@ -33,10 +44,6 @@ define([], function () {
     };
 
     self.printJob = function(Lform){
-
-      console.log(self.orderForm)
-      return
-
 
       if(Lform.$invalid) {
 
@@ -104,24 +111,68 @@ define([], function () {
 
       }
 
-      Identify3D.doBureauSaveJob(self.order.designId, self.selectedPrinter.deviceId, self.selectedPrinter.url, self.orderForm)
-      .then(function(fileData){
 
-        unblockAndNavigateToParentWithReload(fileData);
+      var serverResponse = Identify3D.doBureauSaveJob(self.order.designId, self.selectedPrinter.deviceId, self.selectedPrinter.url, self.orderForm)
+      // .then(function(fileData){
+      //
+      //   // console.log(self.orderForm)
+      //   // return
+      //   //
+      //   // unblockAndNavigateToParentWithReload(fileData);
+      //
+      // },function(locationMeta){
+      //
+      //   // confirmationDialogService('md', locationMeta.error, false, true)
+      //   // .result
+      //   // .then(function (userResponse) {
+      //   //   blockingUI.reject();
+      //   // }, function (userResponse) {
+      //   //   //this should never happen i.e cancelButton=false
+      //   // });
+      //
+      // });
 
-      },function(locationMeta){
 
-        confirmationDialogService('md', locationMeta.error, false, true)
-        .result
-        .then(function (userResponse) {
-          blockingUI.reject();
-        }, function (userResponse) {
-          //this should never happen i.e cancelButton=false
-        });
+      var modalInstance = $modal.open({
+           animation: true,
+           controller: 'ValidatorModalController as validatorModal',
+           templateUrl: 'common/validator-modal.html',
+           size: 'md',
+           backdrop: 'static',
+           keyboard: false,
+           resolve: {
+             serverResponse: function () {
+               return {
+                 serverResponse: serverResponse,
+               };
+             }
+           }
+         });
 
-      });
+       modalInstance.result.then(function (fileData) {
+
+         console.log('recevied ok')
+         blockingUI.resolve();
+
+         serverResponse.then(function(fileData){
+           console.log('downloading', fileData);
+           unblockAndNavigateToParentWithReload(fileData);
+           return fileData;
+         });
+
+       }, function (err) {
+         console.log('recevied dismiss')
+           blockingUI.reject();
+           return err;
+       });
+
 
     }
+
+
+
+
+
 
     self.cancelJob = function() {
       confirmationDialogService('md', 'Are you sure you want to cancel?', true, false)

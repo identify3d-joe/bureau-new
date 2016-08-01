@@ -327,9 +327,17 @@ define([
 
 		module.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
 
-			$locationProvider.html5Mode(true);
-
+			// $locationProvider.html5Mode(true);
+			// $locationProvider
+			//   .html5Mode(false)
+			//   .hashPrefix('!');
 			/* routes */
+
+			// $locationProvider.otherwise({
+		  //       redirectTo: '/#/'
+		  //   });
+
+			 $urlRouterProvider.otherwise('/');
 
 			$stateProvider.state('gate', {
 				url: "/",

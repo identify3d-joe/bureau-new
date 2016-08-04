@@ -30,11 +30,7 @@
     "tag": "v4.2.0",
     "commit": "0b924144a95a54fa738d0450ff66c1dabd11ae74"
   },
-<<<<<<< HEAD
-  "_source": "https://github.com/FortAwesome/Font-Awesome.git",
-=======
   "_source": "git://github.com/FortAwesome/Font-Awesome.git",
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
   "_target": "4.2.0",
   "_originalSource": "fontawesome"
 }

@@ -1,11 +1,7 @@
 /*!
  * Chart.js
  * http://chartjs.org/
-<<<<<<< HEAD
- * Version: 1.1.1
-=======
  * Version: 1.0.2
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
  *
  * Copyright 2015 Nick Downie
  * Released under the MIT license
@@ -39,13 +35,6 @@
 			{
 				return document.defaultView.getComputedStyle(element).getPropertyValue(dimension);
 			}
-<<<<<<< HEAD
-		};
-
-		var width = this.width = computeDimension(context.canvas,'Width') || context.canvas.width;
-		var height = this.height = computeDimension(context.canvas,'Height') || context.canvas.height;
-
-=======
 		}
 
 		var width = this.width = computeDimension(context.canvas,'Width');
@@ -57,7 +46,6 @@
 
 		var width = this.width = context.canvas.width;
 		var height = this.height = context.canvas.height;
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 		this.aspectRatio = this.width / this.height;
 		//High pixel density displays - multiply the size of the canvas height/width by the device pixel ratio, then scale.
 		helpers.retinaScale(this);
@@ -162,12 +150,6 @@
 			// String - Tooltip title font colour
 			tooltipTitleFontColor: "#fff",
 
-<<<<<<< HEAD
-			// String - Tooltip title template
-			tooltipTitleTemplate: "<%= label%>",
-
-=======
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 			// Number - pixel width of padding around tooltip text
 			tooltipYPadding: 6,
 
@@ -187,24 +169,11 @@
 			tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
 
 			// String - Template string for single tooltips
-<<<<<<< HEAD
-			multiTooltipTemplate: "<%= datasetLabel %>: <%= value %>",
-=======
 			multiTooltipTemplate: "<%= value %>",
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 
 			// String - Colour behind the legend colour block
 			multiTooltipKeyBackground: '#fff',
 
-<<<<<<< HEAD
-			// Array - A list of colors to use as the defaults
-			segmentColorDefault: ["#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C", "#FB9A99", "#E31A1C", "#FDBF6F", "#FF7F00", "#CAB2D6", "#6A3D9A", "#B4B482", "#B15928" ],
-
-			// Array - A list of highlight colors to use as the defaults
-			segmentHighlightColorDefaults: [ "#CEF6FF", "#47A0DC", "#DAFFB2", "#5BC854", "#FFC2C1", "#FF4244", "#FFE797", "#FFA728", "#F2DAFE", "#9265C2", "#DCDCAA", "#D98150" ],
-
-=======
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 			// Function - Will fire on animation progression.
 			onAnimationProgress: function(){},
 
@@ -241,26 +210,14 @@
 		clone = helpers.clone = function(obj){
 			var objClone = {};
 			each(obj,function(value,key){
-<<<<<<< HEAD
-				if (obj.hasOwnProperty(key)){
-					objClone[key] = value;
-				}
-=======
 				if (obj.hasOwnProperty(key)) objClone[key] = value;
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 			});
 			return objClone;
 		},
 		extend = helpers.extend = function(base){
 			each(Array.prototype.slice.call(arguments,1), function(extensionObject) {
 				each(extensionObject,function(value,key){
-<<<<<<< HEAD
-					if (extensionObject.hasOwnProperty(key)){
-						base[key] = value;
-					}
-=======
 					if (extensionObject.hasOwnProperty(key)) base[key] = value;
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 				});
 			});
 			return base;
@@ -343,15 +300,9 @@
 		})(),
 		warn = helpers.warn = function(str){
 			//Method for warning of errors
-<<<<<<< HEAD
-			if (window.console && typeof window.console.warn === "function") console.warn(str);
-		},
-		amd = helpers.amd = (typeof define === 'function' && define.amd),
-=======
 			if (window.console && typeof window.console.warn == "function") console.warn(str);
 		},
 		amd = helpers.amd = (typeof define == 'function' && define.amd),
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 		//-- Math methods
 		isNumber = helpers.isNumber = function(n){
 			return !isNaN(parseFloat(n)) && isFinite(n);
@@ -377,24 +328,7 @@
 		},
 		getDecimalPlaces = helpers.getDecimalPlaces = function(num){
 			if (num%1!==0 && isNumber(num)){
-<<<<<<< HEAD
-				var s = num.toString();
-				if(s.indexOf("e-") < 0){
-					// no exponent, e.g. 0.01
-					return s.split(".")[1].length;
-				}
-				else if(s.indexOf(".") < 0) {
-					// no decimal point, e.g. 1e-9
-					return parseInt(s.split("e-")[1]);
-				}
-				else {
-					// exponent and decimal point, e.g. 1.23e-9
-					var parts = s.split(".")[1].split("e-");
-					return parts[0].length + parseInt(parts[1]);
-				}
-=======
 				return num.toString().split(".")[1].length;
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 			}
 			else {
 				return 0;
@@ -453,22 +387,10 @@
 				maxSteps = Math.floor(drawingSize/(textSize * 1.5)),
 				skipFitting = (minSteps >= maxSteps);
 
-<<<<<<< HEAD
-			// Filter out null values since these would min() to zero
-			var values = [];
-			each(valuesArray, function( v ){
-				v == null || values.push( v );
-			});
-			var minValue = min(values),
-			    maxValue = max(values);
-
-			// We need some degree of separation here to calculate the scales if all the values are the same
-=======
 			var maxValue = max(valuesArray),
 				minValue = min(valuesArray);
 
 			// We need some degree of seperation here to calculate the scales if all the values are the same
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 			// Adding/minusing 0.5 will give us a range of 1.
 			if (maxValue === minValue){
 				maxValue += 0.5;
@@ -583,11 +505,7 @@
 		/* jshint ignore:end */
 		generateLabels = helpers.generateLabels = function(templateString,numberOfSteps,graphMin,stepValue){
 			var labelsArray = new Array(numberOfSteps);
-<<<<<<< HEAD
-			if (templateString){
-=======
 			if (labelTemplateString){
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 				each(labelsArray,function(val,index){
 					labelsArray[index] = template(templateString,{value: (graphMin + (stepValue*(index+1)))});
 				});
@@ -608,13 +526,7 @@
 				return -1 * t * (t - 2);
 			},
 			easeInOutQuad: function (t) {
-<<<<<<< HEAD
-				if ((t /= 1 / 2) < 1){
-					return 1 / 2 * t * t;
-				}
-=======
 				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t;
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 				return -1 / 2 * ((--t) * (t - 2) - 1);
 			},
 			easeInCubic: function (t) {
@@ -624,13 +536,7 @@
 				return 1 * ((t = t / 1 - 1) * t * t + 1);
 			},
 			easeInOutCubic: function (t) {
-<<<<<<< HEAD
-				if ((t /= 1 / 2) < 1){
-					return 1 / 2 * t * t * t;
-				}
-=======
 				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t * t;
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 				return 1 / 2 * ((t -= 2) * t * t + 2);
 			},
 			easeInQuart: function (t) {
@@ -640,13 +546,7 @@
 				return -1 * ((t = t / 1 - 1) * t * t * t - 1);
 			},
 			easeInOutQuart: function (t) {
-<<<<<<< HEAD
-				if ((t /= 1 / 2) < 1){
-					return 1 / 2 * t * t * t * t;
-				}
-=======
 				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t * t * t;
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 				return -1 / 2 * ((t -= 2) * t * t * t - 2);
 			},
 			easeInQuint: function (t) {
@@ -656,13 +556,7 @@
 				return 1 * ((t = t / 1 - 1) * t * t * t * t + 1);
 			},
 			easeInOutQuint: function (t) {
-<<<<<<< HEAD
-				if ((t /= 1 / 2) < 1){
-					return 1 / 2 * t * t * t * t * t;
-				}
-=======
 				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t * t * t * t;
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 				return 1 / 2 * ((t -= 2) * t * t * t * t + 2);
 			},
 			easeInSine: function (t) {
@@ -681,23 +575,6 @@
 				return (t === 1) ? 1 : 1 * (-Math.pow(2, -10 * t / 1) + 1);
 			},
 			easeInOutExpo: function (t) {
-<<<<<<< HEAD
-				if (t === 0){
-					return 0;
-				}
-				if (t === 1){
-					return 1;
-				}
-				if ((t /= 1 / 2) < 1){
-					return 1 / 2 * Math.pow(2, 10 * (t - 1));
-				}
-				return 1 / 2 * (-Math.pow(2, -10 * --t) + 2);
-			},
-			easeInCirc: function (t) {
-				if (t >= 1){
-					return t;
-				}
-=======
 				if (t === 0) return 0;
 				if (t === 1) return 1;
 				if ((t /= 1 / 2) < 1) return 1 / 2 * Math.pow(2, 10 * (t - 1));
@@ -705,43 +582,19 @@
 			},
 			easeInCirc: function (t) {
 				if (t >= 1) return t;
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 				return -1 * (Math.sqrt(1 - (t /= 1) * t) - 1);
 			},
 			easeOutCirc: function (t) {
 				return 1 * Math.sqrt(1 - (t = t / 1 - 1) * t);
 			},
 			easeInOutCirc: function (t) {
-<<<<<<< HEAD
-				if ((t /= 1 / 2) < 1){
-					return -1 / 2 * (Math.sqrt(1 - t * t) - 1);
-				}
-=======
 				if ((t /= 1 / 2) < 1) return -1 / 2 * (Math.sqrt(1 - t * t) - 1);
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 				return 1 / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1);
 			},
 			easeInElastic: function (t) {
 				var s = 1.70158;
 				var p = 0;
 				var a = 1;
-<<<<<<< HEAD
-				if (t === 0){
-					return 0;
-				}
-				if ((t /= 1) == 1){
-					return 1;
-				}
-				if (!p){
-					p = 1 * 0.3;
-				}
-				if (a < Math.abs(1)) {
-					a = 1;
-					s = p / 4;
-				} else{
-					s = p / (2 * Math.PI) * Math.asin(1 / a);
-				}
-=======
 				if (t === 0) return 0;
 				if ((t /= 1) == 1) return 1;
 				if (!p) p = 1 * 0.3;
@@ -749,30 +602,12 @@
 					a = 1;
 					s = p / 4;
 				} else s = p / (2 * Math.PI) * Math.asin(1 / a);
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 				return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p));
 			},
 			easeOutElastic: function (t) {
 				var s = 1.70158;
 				var p = 0;
 				var a = 1;
-<<<<<<< HEAD
-				if (t === 0){
-					return 0;
-				}
-				if ((t /= 1) == 1){
-					return 1;
-				}
-				if (!p){
-					p = 1 * 0.3;
-				}
-				if (a < Math.abs(1)) {
-					a = 1;
-					s = p / 4;
-				} else{
-					s = p / (2 * Math.PI) * Math.asin(1 / a);
-				}
-=======
 				if (t === 0) return 0;
 				if ((t /= 1) == 1) return 1;
 				if (!p) p = 1 * 0.3;
@@ -780,32 +615,12 @@
 					a = 1;
 					s = p / 4;
 				} else s = p / (2 * Math.PI) * Math.asin(1 / a);
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 				return a * Math.pow(2, -10 * t) * Math.sin((t * 1 - s) * (2 * Math.PI) / p) + 1;
 			},
 			easeInOutElastic: function (t) {
 				var s = 1.70158;
 				var p = 0;
 				var a = 1;
-<<<<<<< HEAD
-				if (t === 0){
-					return 0;
-				}
-				if ((t /= 1 / 2) == 2){
-					return 1;
-				}
-				if (!p){
-					p = 1 * (0.3 * 1.5);
-				}
-				if (a < Math.abs(1)) {
-					a = 1;
-					s = p / 4;
-				} else {
-					s = p / (2 * Math.PI) * Math.asin(1 / a);
-				}
-				if (t < 1){
-					return -0.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p));}
-=======
 				if (t === 0) return 0;
 				if ((t /= 1 / 2) == 2) return 1;
 				if (!p) p = 1 * (0.3 * 1.5);
@@ -814,7 +629,6 @@
 					s = p / 4;
 				} else s = p / (2 * Math.PI) * Math.asin(1 / a);
 				if (t < 1) return -0.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p));
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 				return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p) * 0.5 + 1;
 			},
 			easeInBack: function (t) {
@@ -827,13 +641,7 @@
 			},
 			easeInOutBack: function (t) {
 				var s = 1.70158;
-<<<<<<< HEAD
-				if ((t /= 1 / 2) < 1){
-					return 1 / 2 * (t * t * (((s *= (1.525)) + 1) * t - s));
-				}
-=======
 				if ((t /= 1 / 2) < 1) return 1 / 2 * (t * t * (((s *= (1.525)) + 1) * t - s));
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 				return 1 / 2 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2);
 			},
 			easeInBounce: function (t) {
@@ -851,13 +659,7 @@
 				}
 			},
 			easeInOutBounce: function (t) {
-<<<<<<< HEAD
-				if (t < 1 / 2){
-					return easingEffects.easeInBounce(t * 2) * 0.5;
-				}
-=======
 				if (t < 1 / 2) return easingEffects.easeInBounce(t * 2) * 0.5;
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 				return easingEffects.easeOutBounce(t * 2 - 1) * 0.5 + 1 * 0.5;
 			}
 		},
@@ -960,23 +762,6 @@
 			});
 		},
 		getMaximumWidth = helpers.getMaximumWidth = function(domNode){
-<<<<<<< HEAD
-			var container = domNode.parentNode,
-			    padding = parseInt(getStyle(container, 'padding-left')) + parseInt(getStyle(container, 'padding-right'));
-			// TODO = check cross browser stuff with this.
-			return container ? container.clientWidth - padding : 0;
-		},
-		getMaximumHeight = helpers.getMaximumHeight = function(domNode){
-			var container = domNode.parentNode,
-			    padding = parseInt(getStyle(container, 'padding-bottom')) + parseInt(getStyle(container, 'padding-top'));
-			// TODO = check cross browser stuff with this.
-			return container ? container.clientHeight - padding : 0;
-		},
-		getStyle = helpers.getStyle = function (el, property) {
-			return el.currentStyle ?
-				el.currentStyle[property] :
-				document.defaultView.getComputedStyle(el, null).getPropertyValue(property);
-=======
 			var container = domNode.parentNode;
 			// TODO = check cross browser stuff with this.
 			return container.clientWidth;
@@ -985,7 +770,6 @@
 			var container = domNode.parentNode;
 			// TODO = check cross browser stuff with this.
 			return container.clientHeight;
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 		},
 		getMaximumSize = helpers.getMaximumSize = helpers.getMaximumWidth, // legacy support
 		retinaScale = helpers.retinaScale = function(chart){
@@ -1060,11 +844,7 @@
 		},
 		stop : function(){
 			// Stops any current animation loop occuring
-<<<<<<< HEAD
-			Chart.animationService.cancelAnimation(this);
-=======
 			cancelAnimFrame(this.animationFrame);
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 			return this;
 		},
 		resize : function(callback){
@@ -1088,28 +868,6 @@
 			if (reflow){
 				this.reflow();
 			}
-<<<<<<< HEAD
-			
-			if (this.options.animation && !reflow){
-				var animation = new Chart.Animation();
-				animation.numSteps = this.options.animationSteps;
-				animation.easing = this.options.animationEasing;
-				
-				// render function
-				animation.render = function(chartInstance, animationObject) {
-					var easingFunction = helpers.easingEffects[animationObject.easing];
-					var stepDecimal = animationObject.currentStep / animationObject.numSteps;
-					var easeDecimal = easingFunction(stepDecimal);
-					
-					chartInstance.draw(easeDecimal, stepDecimal, animationObject.currentStep);
-				};
-				
-				// user events
-				animation.onAnimationProgress = this.options.onAnimationProgress;
-				animation.onAnimationComplete = this.options.onAnimationComplete;
-				
-				Chart.animationService.addAnimation(this, animation);
-=======
 			if (this.options.animation && !reflow){
 				helpers.animationLoop(
 					this.draw,
@@ -1119,7 +877,6 @@
 					this.options.onAnimationComplete,
 					this
 				);
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 			}
 			else{
 				this.draw();
@@ -1128,16 +885,9 @@
 			return this;
 		},
 		generateLegend : function(){
-<<<<<<< HEAD
-			return helpers.template(this.options.legendTemplate, this);
-		},
-		destroy : function(){
-			this.stop();
-=======
 			return template(this.options.legendTemplate,this);
 		},
 		destroy : function(){
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 			this.clear();
 			unbindEvents(this, this.events);
 			var canvas = this.chart.canvas;
@@ -1265,11 +1015,7 @@
 						labels: tooltipLabels,
 						legendColors: tooltipColors,
 						legendColorBackground : this.options.multiTooltipKeyBackground,
-<<<<<<< HEAD
-						title: template(this.options.tooltipTitleTemplate,ChartElements[0]),
-=======
 						title: ChartElements[0].label,
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 						chart: this.chart,
 						ctx: this.chart.ctx,
 						custom: this.options.customTooltips
@@ -1453,24 +1199,9 @@
 				y: chartY
 			});
 
-<<<<<<< HEAD
-			// Normalize all angles to 0 - 2*PI (0 - 360°)
-			var pointRelativeAngle = pointRelativePosition.angle % (Math.PI * 2),
-			    startAngle = (Math.PI * 2 + this.startAngle) % (Math.PI * 2),
-			    endAngle = (Math.PI * 2 + this.endAngle) % (Math.PI * 2) || 360;
-
-			// Calculate wether the pointRelativeAngle is between the start and the end angle
-			var betweenAngles = (endAngle < startAngle) ?
-				pointRelativeAngle <= endAngle || pointRelativeAngle >= startAngle:
-				pointRelativeAngle >= startAngle && pointRelativeAngle <= endAngle;
-
-			//Check if within the range of the open/close angle
-			var withinRadius = (pointRelativePosition.distance >= this.innerRadius && pointRelativePosition.distance <= this.outerRadius);
-=======
 			//Check if within the range of the open/close angle
 			var betweenAngles = (pointRelativePosition.angle >= this.startAngle && pointRelativePosition.angle <= this.endAngle),
 				withinRadius = (pointRelativePosition.distance >= this.innerRadius && pointRelativePosition.distance <= this.outerRadius);
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 
 			return (betweenAngles && withinRadius);
 			//Ensure within the outside of the arc centre, but inside arc outer
@@ -1491,15 +1222,9 @@
 
 			ctx.beginPath();
 
-<<<<<<< HEAD
-			ctx.arc(this.x, this.y, this.outerRadius < 0 ? 0 : this.outerRadius, this.startAngle, this.endAngle);
-
-            ctx.arc(this.x, this.y, this.innerRadius < 0 ? 0 : this.innerRadius, this.endAngle, this.startAngle, true);
-=======
 			ctx.arc(this.x, this.y, this.outerRadius, this.startAngle, this.endAngle);
 
 			ctx.arc(this.x, this.y, this.innerRadius, this.endAngle, this.startAngle, true);
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 
 			ctx.closePath();
 			ctx.strokeStyle = this.strokeColor;
@@ -1558,19 +1283,6 @@
 		}
 	});
 
-<<<<<<< HEAD
-	Chart.Animation = Chart.Element.extend({
-		currentStep: null, // the current animation step
-		numSteps: 60, // default number of steps
-		easing: "", // the easing to use for this animation
-		render: null, // render function used by the animation service
-		
-		onAnimationProgress: null, // user specified callback to fire on each step of the animation 
-		onAnimationComplete: null, // user specified callback to fire when the animation finishes
-	});
-	
-=======
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 	Chart.Tooltip = Chart.Element.extend({
 		draw : function(){
 
@@ -1660,12 +1372,7 @@
 
 			this.titleFont = fontString(this.titleFontSize,this.titleFontStyle,this.titleFontFamily);
 
-<<<<<<< HEAD
-			this.titleHeight = this.title ? this.titleFontSize * 1.5 : 0;
-			this.height = (this.labels.length * this.fontSize) + ((this.labels.length-1) * (this.fontSize/2)) + (this.yPadding*2) + this.titleHeight;
-=======
 			this.height = (this.labels.length * this.fontSize) + ((this.labels.length-1) * (this.fontSize/2)) + (this.yPadding*2) + this.titleFontSize *1.5;
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 
 			this.ctx.font = this.titleFont;
 
@@ -1701,15 +1408,9 @@
 
 			//If the index is zero, we're getting the title
 			if (index === 0){
-<<<<<<< HEAD
-				return baseLineHeight + this.titleHeight / 3;
-			} else{
-				return baseLineHeight + ((this.fontSize * 1.5 * afterTitleIndex) + this.fontSize / 2) + this.titleHeight;
-=======
 				return baseLineHeight + this.titleFontSize/2;
 			} else{
 				return baseLineHeight + ((this.fontSize*1.5*afterTitleIndex) + this.fontSize/2) + this.titleFontSize * 1.5;
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 			}
 
 		},
@@ -1765,11 +1466,7 @@
 			for (var i=0; i<=this.steps; i++){
 				this.yLabels.push(template(this.templateString,{value:(this.min + (i * this.stepValue)).toFixed(stepDecimalPlaces)}));
 			}
-<<<<<<< HEAD
-			this.yLabelWidth = (this.display && this.showLabels) ? longestText(this.ctx,this.font,this.yLabels) + 10 : 0;
-=======
 			this.yLabelWidth = (this.display && this.showLabels) ? longestText(this.ctx,this.font,this.yLabels) : 0;
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 		},
 		addXLabel : function(label){
 			this.xLabels.push(label);
@@ -1793,12 +1490,6 @@
 			this.startPoint += this.padding;
 			this.endPoint -= this.padding;
 
-<<<<<<< HEAD
-			// Cache the starting endpoint, excluding the space for x labels
-			var cachedEndPoint = this.endPoint;
-
-=======
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 			// Cache the starting height, so can determine if we need to recalculate the scale yAxis
 			var cachedHeight = this.endPoint - this.startPoint,
 				cachedYLabelWidth;
@@ -1830,10 +1521,6 @@
 
 				// Only go through the xLabel loop again if the yLabel width has changed
 				if (cachedYLabelWidth < this.yLabelWidth){
-<<<<<<< HEAD
-					this.endPoint = cachedEndPoint;
-=======
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 					this.calculateXLabelRotation();
 				}
 			}
@@ -1852,11 +1539,7 @@
 
 
 			this.xScalePaddingRight = lastWidth/2 + 3;
-<<<<<<< HEAD
-			this.xScalePaddingLeft = (firstWidth/2 > this.yLabelWidth) ? firstWidth/2 : this.yLabelWidth;
-=======
 			this.xScalePaddingLeft = (firstWidth/2 > this.yLabelWidth + 10) ? firstWidth/2 : this.yLabelWidth + 10;
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 
 			this.xLabelRotation = 0;
 			if (this.display){
@@ -1875,11 +1558,7 @@
 					lastRotated = cosRotation * lastWidth;
 
 					// We're right aligning the text now.
-<<<<<<< HEAD
-					if (firstRotated + this.fontSize / 2 > this.yLabelWidth){
-=======
 					if (firstRotated + this.fontSize / 2 > this.yLabelWidth + 8){
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 						this.xScalePaddingLeft = firstRotated + this.fontSize / 2;
 					}
 					this.xScalePaddingRight = this.fontSize/2;
@@ -2261,48 +1940,14 @@
 					ctx.lineWidth = this.angleLineWidth;
 					ctx.strokeStyle = this.angleLineColor;
 					for (var i = this.valuesCount - 1; i >= 0; i--) {
-<<<<<<< HEAD
-						var centerOffset = null, outerPosition = null;
-
-						if (this.angleLineWidth > 0 && (i % this.angleLineInterval === 0)){
-							centerOffset = this.calculateCenterOffset(this.max);
-							outerPosition = this.getPointPosition(i, centerOffset);
-=======
 						if (this.angleLineWidth > 0){
 							var outerPosition = this.getPointPosition(i, this.calculateCenterOffset(this.max));
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 							ctx.beginPath();
 							ctx.moveTo(this.xCenter, this.yCenter);
 							ctx.lineTo(outerPosition.x, outerPosition.y);
 							ctx.stroke();
 							ctx.closePath();
 						}
-<<<<<<< HEAD
-
-						if (this.backgroundColors && this.backgroundColors.length == this.valuesCount) {
-							if (centerOffset == null)
-								centerOffset = this.calculateCenterOffset(this.max);
-
-							if (outerPosition == null)
-								outerPosition = this.getPointPosition(i, centerOffset);
-
-							var previousOuterPosition = this.getPointPosition(i === 0 ? this.valuesCount - 1 : i - 1, centerOffset);
-							var nextOuterPosition = this.getPointPosition(i === this.valuesCount - 1 ? 0 : i + 1, centerOffset);
-
-							var previousOuterHalfway = { x: (previousOuterPosition.x + outerPosition.x) / 2, y: (previousOuterPosition.y + outerPosition.y) / 2 };
-							var nextOuterHalfway = { x: (outerPosition.x + nextOuterPosition.x) / 2, y: (outerPosition.y + nextOuterPosition.y) / 2 };
-
-							ctx.beginPath();
-							ctx.moveTo(this.xCenter, this.yCenter);
-							ctx.lineTo(previousOuterHalfway.x, previousOuterHalfway.y);
-							ctx.lineTo(outerPosition.x, outerPosition.y);
-							ctx.lineTo(nextOuterHalfway.x, nextOuterHalfway.y);
-							ctx.fillStyle = this.backgroundColors[i];
-							ctx.fill();
-							ctx.closePath();
-						}
-=======
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 						// Extra 3px out for some label spacing
 						var pointLabelPosition = this.getPointPosition(i, this.calculateCenterOffset(this.max) + 5);
 						ctx.font = fontString(this.pointLabelFontSize,this.pointLabelFontStyle,this.pointLabelFontFamily);
@@ -2339,96 +1984,6 @@
 		}
 	});
 
-<<<<<<< HEAD
-	Chart.animationService = {
-		frameDuration: 17,
-		animations: [],
-		dropFrames: 0,
-		addAnimation: function(chartInstance, animationObject) {
-			for (var index = 0; index < this.animations.length; ++ index){
-				if (this.animations[index].chartInstance === chartInstance){
-					// replacing an in progress animation
-					this.animations[index].animationObject = animationObject;
-					return;
-				}
-			}
-			
-			this.animations.push({
-				chartInstance: chartInstance,
-				animationObject: animationObject
-			});
-
-			// If there are no animations queued, manually kickstart a digest, for lack of a better word
-			if (this.animations.length == 1) {
-				helpers.requestAnimFrame.call(window, this.digestWrapper);
-			}
-		},
-		// Cancel the animation for a given chart instance
-		cancelAnimation: function(chartInstance) {
-			var index = helpers.findNextWhere(this.animations, function(animationWrapper) {
-				return animationWrapper.chartInstance === chartInstance;
-			});
-			
-			if (index)
-			{
-				this.animations.splice(index, 1);
-			}
-		},
-		// calls startDigest with the proper context
-		digestWrapper: function() {
-			Chart.animationService.startDigest.call(Chart.animationService);
-		},
-		startDigest: function() {
-
-			var startTime = Date.now();
-			var framesToDrop = 0;
-
-			if(this.dropFrames > 1){
-				framesToDrop = Math.floor(this.dropFrames);
-				this.dropFrames -= framesToDrop;
-			}
-
-			for (var i = 0; i < this.animations.length; i++) {
-
-				if (this.animations[i].animationObject.currentStep === null){
-					this.animations[i].animationObject.currentStep = 0;
-				}
-
-				this.animations[i].animationObject.currentStep += 1 + framesToDrop;
-				if(this.animations[i].animationObject.currentStep > this.animations[i].animationObject.numSteps){
-					this.animations[i].animationObject.currentStep = this.animations[i].animationObject.numSteps;
-				}
-				
-				this.animations[i].animationObject.render(this.animations[i].chartInstance, this.animations[i].animationObject);
-				
-				// Check if executed the last frame.
-				if (this.animations[i].animationObject.currentStep == this.animations[i].animationObject.numSteps){
-					// Call onAnimationComplete
-					this.animations[i].animationObject.onAnimationComplete.call(this.animations[i].chartInstance);
-					// Remove the animation.
-					this.animations.splice(i, 1);
-					// Keep the index in place to offset the splice
-					i--;
-				}
-			}
-
-			var endTime = Date.now();
-			var delay = endTime - startTime - this.frameDuration;
-			var frameDelay = delay / this.frameDuration;
-
-			if(frameDelay > 1){
-				this.dropFrames += frameDelay;
-			}
-
-			// Do we have more stuff to animate?
-			if (this.animations.length > 0){
-				helpers.requestAnimFrame.call(window, this.digestWrapper);
-			}
-		}
-	};
-
-=======
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 	// Attach global event to resize each chart instance when the browser resizes
 	helpers.addEvent(window, "resize", (function(){
 		// Basic debounce of resize function so it doesn't hurt performance when resizing browser.
@@ -2449,11 +2004,7 @@
 
 
 	if (amd) {
-<<<<<<< HEAD
-		define('Chart', [], function(){
-=======
 		define(function(){
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 			return Chart;
 		});
 	} else if (typeof module === 'object' && module.exports) {
@@ -2509,11 +2060,7 @@
 		barDatasetSpacing : 1,
 
 		//String - A legend template
-<<<<<<< HEAD
-		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span class=\"<%=name.toLowerCase()%>-legend-icon\" style=\"background-color:<%=datasets[i].fillColor%>\"></span><span class=\"<%=name.toLowerCase()%>-legend-text\"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></span></li><%}%></ul>"
-=======
 		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 
 	};
 
@@ -2558,15 +2105,8 @@
 						bar.restore(['fillColor', 'strokeColor']);
 					});
 					helpers.each(activeBars, function(activeBar){
-<<<<<<< HEAD
-						if (activeBar) {
-							activeBar.fillColor = activeBar.highlightFill;
-							activeBar.strokeColor = activeBar.highlightStroke;
-						}
-=======
 						activeBar.fillColor = activeBar.highlightFill;
 						activeBar.strokeColor = activeBar.highlightStroke;
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 					});
 					this.showTooltip(activeBars);
 				});
@@ -2597,17 +2137,10 @@
 						value : dataPoint,
 						label : data.labels[index],
 						datasetLabel: dataset.label,
-<<<<<<< HEAD
-						strokeColor : (typeof dataset.strokeColor == 'object') ? dataset.strokeColor[index] : dataset.strokeColor,
-						fillColor : (typeof dataset.fillColor == 'object') ? dataset.fillColor[index] : dataset.fillColor,
-						highlightFill : (dataset.highlightFill) ? (typeof dataset.highlightFill == 'object') ? dataset.highlightFill[index] : dataset.highlightFill : (typeof dataset.fillColor == 'object') ? dataset.fillColor[index] : dataset.fillColor,
-						highlightStroke : (dataset.highlightStroke) ? (typeof dataset.highlightStroke == 'object') ? dataset.highlightStroke[index] : dataset.highlightStroke : (typeof dataset.strokeColor == 'object') ? dataset.strokeColor[index] : dataset.strokeColor
-=======
 						strokeColor : dataset.strokeColor,
 						fillColor : dataset.fillColor,
 						highlightFill : dataset.highlightFill || dataset.fillColor,
 						highlightStroke : dataset.highlightStroke || dataset.strokeColor
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 					}));
 				},this);
 
@@ -2729,10 +2262,6 @@
 				this.datasets[datasetIndex].bars.push(new this.BarClass({
 					value : value,
 					label : label,
-<<<<<<< HEAD
-					datasetLabel: this.datasets[datasetIndex].label,
-=======
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 					x: this.scale.calculateBarX(this.datasets.length, datasetIndex, this.scale.valuesCount+1),
 					y: this.scale.endPoint,
 					width : this.scale.calculateBarWidth(this.datasets.length),
@@ -2828,16 +2357,6 @@
 		animateScale : false,
 
 		//String - A legend template
-<<<<<<< HEAD
-		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span class=\"<%=name.toLowerCase()%>-legend-icon\" style=\"background-color:<%=segments[i].fillColor%>\"></span><span class=\"<%=name.toLowerCase()%>-legend-text\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span></li><%}%></ul>"
-
-	};
-
-	Chart.Type.extend({
-		//Passing in a name registers this chart in the Chart namespace
-		name: "Doughnut",
-		//Providing a defaults will also register the defaults in the chart namespace
-=======
 		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
 
 	};
@@ -2847,7 +2366,6 @@
 		//Passing in a name registers this chart in the Chart namespace
 		name: "Doughnut",
 		//Providing a defaults will also register the deafults in the chart namespace
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 		defaults : defaultConfig,
 		//Initialize is fired when the chart is initialized - Data is passed in as a parameter
 		//Config is automatically merged by the core of Chart.js, and is available at this.options
@@ -2880,12 +2398,6 @@
 			this.calculateTotal(data);
 
 			helpers.each(data,function(datapoint, index){
-<<<<<<< HEAD
-				if (!datapoint.color) {
-					datapoint.color = 'hsl(' + (360 * index / data.length) + ', 100%, 50%)';
-				}
-=======
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 				this.addData(datapoint, index, true);
 			},this);
 
@@ -2902,15 +2414,7 @@
 			return segmentsArray;
 		},
 		addData : function(segment, atIndex, silent){
-<<<<<<< HEAD
-			var index = atIndex !== undefined ? atIndex : this.segments.length;
-			if ( typeof(segment.color) === "undefined" ) {
-				segment.color = Chart.defaults.global.segmentColorDefault[index % Chart.defaults.global.segmentColorDefault.length];
-				segment.highlight = Chart.defaults.global.segmentHighlightColorDefaults[index % Chart.defaults.global.segmentHighlightColorDefaults.length];				
-			}
-=======
 			var index = atIndex || this.segments.length;
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 			this.segments.splice(index, 0, new this.SegmentArc({
 				value : segment.value,
 				outerRadius : (this.options.animateScale) ? 0 : this.outerRadius,
@@ -2929,17 +2433,8 @@
 				this.update();
 			}
 		},
-<<<<<<< HEAD
-		calculateCircumference : function(value) {
-			if ( this.total > 0 ) {
-				return (Math.PI*2)*(value / this.total);
-			} else {
-				return 0;
-			}
-=======
 		calculateCircumference : function(value){
 			return (Math.PI*2)*(Math.abs(value) / this.total);
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 		},
 		calculateTotal : function(data){
 			this.total = 0;
@@ -3012,10 +2507,6 @@
 	});
 
 }).call(this);
-<<<<<<< HEAD
-
-=======
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 (function(){
 	"use strict";
 
@@ -3068,14 +2559,7 @@
 		datasetFill : true,
 
 		//String - A legend template
-<<<<<<< HEAD
-		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span class=\"<%=name.toLowerCase()%>-legend-icon\" style=\"background-color:<%=datasets[i].strokeColor%>\"></span><span class=\"<%=name.toLowerCase()%>-legend-text\"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></span></li><%}%></ul>",
-
-		//Boolean - Whether to horizontally center the label and point dot inside the grid
-		offsetGridLines : false
-=======
 		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 
 	};
 
@@ -3086,10 +2570,6 @@
 		initialize:  function(data){
 			//Declare the extension of the default point, to cater for the options passed in to the constructor
 			this.PointClass = Chart.Point.extend({
-<<<<<<< HEAD
-				offsetGridLines : this.options.offsetGridLines,
-=======
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 				strokeWidth : this.options.pointDotStrokeWidth,
 				radius : this.options.pointDotRadius,
 				display: this.options.pointDot,
@@ -3205,10 +2685,6 @@
 				width : this.chart.width,
 				ctx : this.chart.ctx,
 				textColor : this.options.scaleFontColor,
-<<<<<<< HEAD
-				offsetGridLines : this.options.offsetGridLines,
-=======
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 				fontSize : this.options.scaleFontSize,
 				fontStyle : this.options.scaleFontStyle,
 				fontFamily : this.options.scaleFontFamily,
@@ -3259,10 +2735,6 @@
 				this.datasets[datasetIndex].points.push(new this.PointClass({
 					value : value,
 					label : label,
-<<<<<<< HEAD
-					datasetLabel: this.datasets[datasetIndex].label,
-=======
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 					x: this.scale.calculateX(this.scale.valuesCount+1),
 					y: this.scale.endPoint,
 					strokeColor : this.datasets[datasetIndex].pointStrokeColor,
@@ -3306,10 +2778,6 @@
 				return helpers.findPreviousWhere(collection, hasValue, index) || point;
 			};
 
-<<<<<<< HEAD
-			if (!this.scale) return;
-=======
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 			this.scale.draw(easingDecimal);
 
 
@@ -3329,11 +2797,7 @@
 				},this);
 
 
-<<<<<<< HEAD
-				// Control points need to be calculated in a separate loop, because we need to know the current x/y of the point
-=======
 				// Control points need to be calculated in a seperate loop, because we need to know the current x/y of the point
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 				// This would cause issues when there is no animation, because the y of the next point would be 0, so beziers would be skewed
 				if (this.options.bezierCurve){
 					helpers.each(pointsWithValues, function(point, index){
@@ -3394,13 +2858,7 @@
 					}
 				}, this);
 
-<<<<<<< HEAD
-				if (this.options.datasetStroke) {
-					ctx.stroke();
-				}
-=======
 				ctx.stroke();
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 
 				if (this.options.datasetFill && pointsWithValues.length > 0){
 					//Round off the line by going to the base of the chart, back to the start, then fill.
@@ -3454,11 +2912,7 @@
 		//Boolean - Stroke a line around each segment in the chart
 		segmentShowStroke : true,
 
-<<<<<<< HEAD
-		//String - The colour of the stroke on each segment.
-=======
 		//String - The colour of the stroke on each segement.
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 		segmentStrokeColor : "#fff",
 
 		//Number - The width of the stroke value in pixels
@@ -3477,22 +2931,14 @@
 		animateScale : false,
 
 		//String - A legend template
-<<<<<<< HEAD
-		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span class=\"<%=name.toLowerCase()%>-legend-icon\" style=\"background-color:<%=segments[i].fillColor%>\"></span><span class=\"<%=name.toLowerCase()%>-legend-text\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span></li><%}%></ul>"
-=======
 		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 	};
 
 
 	Chart.Type.extend({
 		//Passing in a name registers this chart in the Chart namespace
 		name: "PolarArea",
-<<<<<<< HEAD
-		//Providing a defaults will also register the defaults in the chart namespace
-=======
 		//Providing a defaults will also register the deafults in the chart namespace
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 		defaults : defaultConfig,
 		//Initialize is fired when the chart is initialized - Data is passed in as a parameter
 		//Config is automatically merged by the core of Chart.js, and is available at this.options
@@ -3686,10 +3132,6 @@
 	});
 
 }).call(this);
-<<<<<<< HEAD
-
-=======
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 (function(){
 	"use strict";
 
@@ -3720,12 +3162,6 @@
 			//Number - Pixel width of the angle line
 			angleLineWidth : 1,
 
-<<<<<<< HEAD
-			//Number - Interval at which to draw angle lines ("every Nth point")
-			angleLineInterval: 1,
-
-=======
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 			//String - Point label font declaration
 			pointLabelFontFamily : "'Arial'",
 
@@ -3760,11 +3196,7 @@
 			datasetFill : true,
 
 			//String - A legend template
-<<<<<<< HEAD
-			legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span class=\"<%=name.toLowerCase()%>-legend-icon\" style=\"background-color:<%=datasets[i].strokeColor%>\"></span><span class=\"<%=name.toLowerCase()%>-legend-text\"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></span></li><%}%></ul>"
-=======
 			legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 
 		},
 
@@ -3876,20 +3308,12 @@
 				showLabels: this.options.scaleShowLabels,
 				showLabelBackdrop: this.options.scaleShowLabelBackdrop,
 				backdropColor: this.options.scaleBackdropColor,
-<<<<<<< HEAD
-				backgroundColors: this.options.scaleBackgroundColors,
-=======
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 				backdropPaddingY : this.options.scaleBackdropPaddingY,
 				backdropPaddingX: this.options.scaleBackdropPaddingX,
 				lineWidth: (this.options.scaleShowLine) ? this.options.scaleLineWidth : 0,
 				lineColor: this.options.scaleLineColor,
 				angleLineColor : this.options.angleLineColor,
 				angleLineWidth : (this.options.angleShowLineOut) ? this.options.angleLineWidth : 0,
-<<<<<<< HEAD
-        angleLineInterval: (this.options.angleLineInterval) ? this.options.angleLineInterval : 1,
-=======
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 				// Point labels at the edge of each line
 				pointLabelFontColor : this.options.pointLabelFontColor,
 				pointLabelFontSize : this.options.pointLabelFontSize,
@@ -3955,10 +3379,6 @@
 				this.datasets[datasetIndex].points.push(new this.PointClass({
 					value : value,
 					label : label,
-<<<<<<< HEAD
-					datasetLabel: this.datasets[datasetIndex].label,
-=======
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 					x: pointPosition.x,
 					y: pointPosition.y,
 					strokeColor : this.datasets[datasetIndex].pointStrokeColor,
@@ -4033,14 +3453,8 @@
 				ctx.stroke();
 
 				ctx.fillStyle = dataset.fillColor;
-<<<<<<< HEAD
-				if(this.options.datasetFill){
-					ctx.fill();
-				}
-=======
 				ctx.fill();
 
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 				//Now draw the points over the line
 				//A little inefficient double looping, but better than the line
 				//lagging behind the point positions
@@ -4060,8 +3474,4 @@
 
 
 
-<<<<<<< HEAD
 }).call(this);
-=======
-}).call(this);
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e

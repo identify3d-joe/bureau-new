@@ -23,14 +23,8 @@
     "tag": "3.2.0",
     "commit": "39b85149cc33f60ccdddcfed1a40fecde8004df7"
   },
-<<<<<<< HEAD
-  "_source": "https://github.com/log0ymxm/bootswatch-scss.git",
-  "_target": "~3.2.0",
-  "_originalSource": "bootswatch-scss"
-=======
   "_source": "git://github.com/log0ymxm/bootswatch-scss.git",
   "_target": "~3.2.0",
   "_originalSource": "bootswatch-scss",
   "_direct": true
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 }

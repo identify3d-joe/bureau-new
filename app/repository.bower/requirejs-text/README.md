@@ -18,13 +18,6 @@ It can also be installed using [volo](https://github.com/volojs/volo):
 
     volo add requirejs/text
 
-<<<<<<< HEAD
-If using npm:
-
-    npm install requirejs/text
-
-=======
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 ## Usage
 
 It is nice to build HTML using regular HTML tags, instead of building up DOM
@@ -171,11 +164,7 @@ requirejs.config({
 });
 ```
 
-<<<<<<< HEAD
-### Forcing the environment implementation
-=======
 ### Forcing the environment implemention
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 
 The text plugin tries to detect what environment it is available for loading
 text resources, Node, XMLHttpRequest (XHR) or Rhino, but sometimes the
@@ -196,22 +185,6 @@ requirejs.config({
 
 ## License
 
-<<<<<<< HEAD
-MIT
-
-## Code of Conduct
-
-[jQuery Foundation Code of Conduct](https://jquery.org/conduct/).
-
-## Where are the tests?
-
-They are in the [requirejs](https://github.com/requirejs/requirejs) and
-[r.js](https://github.com/requirejs/r.js) repos.
-
-## History
-
-This plugin was in the [requirejs repo](https://github.com/requirejs/requirejs)
-=======
 Dual-licensed -- new BSD or MIT.
 
 ## Where are the tests?
@@ -222,5 +195,4 @@ They are in the [requirejs](https://github.com/jrburke/requirejs) and
 ## History
 
 This plugin was in the [requirejs repo](https://github.com/jrburke/requirejs)
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 up until the requirejs 2.0 release.

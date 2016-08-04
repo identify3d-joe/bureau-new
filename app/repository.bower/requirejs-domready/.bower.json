@@ -1,27 +1,14 @@
 {
-<<<<<<< HEAD
-  "name": "domReady",
-  "version": "2.0.1",
-  "main": "domReady.js",
-  "homepage": "https://github.com/requirejs/domReady",
-=======
   "name": "requirejs-domready",
   "homepage": "https://github.com/requirejs/domReady",
   "version": "2.0.1",
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
   "_release": "2.0.1",
   "_resolution": {
     "type": "version",
     "tag": "2.0.1",
-<<<<<<< HEAD
-    "commit": "c74caaa6dac64f2f47093f4952b991390406adfb"
-  },
-  "_source": "https://github.com/requirejs/domReady.git",
-=======
     "commit": "850d9c92541afac5d9c64506736272cdbf7a3ae5"
   },
   "_source": "git://github.com/requirejs/domReady.git",
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
   "_target": "2.0.1",
   "_originalSource": "requirejs-domready"
 }

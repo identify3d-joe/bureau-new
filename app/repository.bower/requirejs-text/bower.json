@@ -1,11 +1,5 @@
 {
   "name": "text",
-<<<<<<< HEAD
-  "version": "2.0.15",
-  "main": "text.js",
-  "license": "MIT"
-=======
   "version": "2.0.14",
   "main": "text.js"
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 }

@@ -12,11 +12,7 @@
     "tag": "v1.2.18",
     "commit": "8b012cfe691a5e7bc95de08e764595f7dc7ee223"
   },
-<<<<<<< HEAD
-  "_source": "https://github.com/angular/bower-angular-sanitize.git",
-=======
   "_source": "git://github.com/angular/bower-angular-sanitize.git",
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
   "_target": "1.2.18",
   "_originalSource": "angular-sanitize"
 }

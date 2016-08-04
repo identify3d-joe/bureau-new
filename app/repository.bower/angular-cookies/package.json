@@ -1,10 +1,6 @@
 {
   "name": "angular-cookies",
-<<<<<<< HEAD
-  "version": "1.5.7",
-=======
   "version": "1.4.7",
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
   "description": "AngularJS module for cookies",
   "main": "index.js",
   "scripts": {
@@ -26,16 +22,5 @@
   "bugs": {
     "url": "https://github.com/angular/angular.js/issues"
   },
-<<<<<<< HEAD
-  "homepage": "http://angularjs.org",
-  "jspm": {
-    "shim": {
-      "angular-cookies": {
-        "deps": ["angular"]
-      }
-    }
-  }
-=======
   "homepage": "http://angularjs.org"
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
 }

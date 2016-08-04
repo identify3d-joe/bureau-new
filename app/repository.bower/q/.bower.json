@@ -8,11 +8,7 @@
     "tag": "v1.0.0",
     "commit": "88063c0bb323717517ff0362454efa3dea897f3b"
   },
-<<<<<<< HEAD
-  "_source": "https://github.com/kriskowal/q.git",
-=======
   "_source": "git://github.com/kriskowal/q.git",
->>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
   "_target": "1.0.0",
   "_originalSource": "q"
 }

@@ -20,18 +20,9 @@ define([], function () {
 
     self.orderForm = angular.extend({}, orderFormData);
 
+    self.deviceDefinitions = self.orderForm.DesignRules.deviceDefinitions;
+
     delete self.orderForm.DesignRules.deviceDefinitions;
-
-
-
-
-
-
-
-
-
-
-
 
     self.isEditing = !!orderData;
 

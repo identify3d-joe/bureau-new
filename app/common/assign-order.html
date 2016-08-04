@@ -15,32 +15,6 @@
 
                 <div class="col-md-6">
 
-                    <div class="page-header">
-                        <h4><i class="fa fa-lock"></i> Certificate</h4>
-                    </div>
-
-                    <div class="row ">
-                        <div class="col-md-12 ">
-
-                            <button type="button" ng-show="!assignOrder.isShowCertificate" href ng-click="assignOrder.isShowCertificate=true" class=" btn btn-md btn-primary">Show Certificate</button>
-                            <button type="button" ng-show="assignOrder.isShowCertificate" href ng-click="assignOrder.isShowCertificate=false" class=" btn btn-md btn-primary">Hide Certificate</button>
-                        </div>
-                    </div>
-
-
-                    <div class="row" ng-if="assignOrder.isShowCertificate">
-                        <div class="col-md-12">
-
-                            <br/>
-
-                            <div class="form-group">
-                                <textarea class="form-control" rows="24" id="comment">{{assignOrder.order.acert}}</textarea>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <br/>
 
                     <div class="page-header">
                         <h4><i class="fa fa-picture-o"></i> {{assignOrder.order.name}}</h4>
@@ -133,6 +107,35 @@
                         </div>
                     </div>
 
+                    <div class="page-header">
+                        <h4><i class="fa fa-print"></i> Required Printer</h4>
+                    </div>
+
+                    <div ng-if="assignOrder.deviceDefinitions && assignOrder.deviceDefinitions.length === 0" ng-if="orders.noneFound" class="alert alert-warning" role="alert">
+                        <p>No device requirement provided.</p>
+                    </div>
+
+                    <div ng-if="assignOrder.deviceDefinitions && assignOrder.deviceDefinitions.length > 0" class="row">
+                        <div class="col-md-12">
+
+                            <div class="bs-example" data-example-id="simple-table">
+                                <table class="table table-bordered">
+                                    <tbody>
+
+                                        <tr ng-repeat="device in assignOrder.deviceDefinitions">
+                                            <th scope="row">{{device.manufacturer}}</th>
+                                            <td>
+                                              {{device.model}}
+                                              <span ng-if="device.machineType" class="label label-info">{{device.machineType}}</span>
+                                              <span ng-if="device.family" class="label label-info">{{device.family}}</span>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="page-header">
                         <h4><i class="fa fa-list"></i> Order Information</h4>
@@ -205,6 +208,37 @@
                             </div>
                         </div>
                     </div>
+
+                    <br/>
+
+
+                    <div class="page-header">
+                        <h4><i class="fa fa-lock"></i> Certificate</h4>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-md-12 ">
+
+                            <button type="button" ng-show="!assignOrder.isShowCertificate" href ng-click="assignOrder.isShowCertificate=true" class=" btn btn-md btn-primary">Show Certificate</button>
+                            <button type="button" ng-show="assignOrder.isShowCertificate" href ng-click="assignOrder.isShowCertificate=false" class=" btn btn-md btn-primary">Hide Certificate</button>
+                        </div>
+                    </div>
+
+
+                    <div class="row" ng-if="assignOrder.isShowCertificate">
+                        <div class="col-md-12">
+
+                            <br/>
+
+                            <div class="form-group">
+                                <textarea class="form-control" rows="24" id="comment">{{assignOrder.order.acert}}</textarea>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
 
                 </div>
 
@@ -284,7 +318,9 @@
                     <span ng-repeat="(key, arr) in assignOrder.orderForm.DesignRules" ng-if="isArray(arr) && arr.length > 0">
 
 
-                      <div class="well well-sm page-header">
+                      <div
+                       ng-show="key == 'laserSintering'"
+                       class="well well-sm page-header">
                         <h4>
                           <span class="label label-default">{{arr.length}}</span> {{key | uppercase}}
                         </h4>

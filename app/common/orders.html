@@ -41,7 +41,7 @@
                                 <td>{{order.dateReceived}}</td>
                                 <td><b>{{order.name}}</b></td>
                                 <td>{{order.quantityOrdered ? order.quantityOrdered : '-'}}</td>
-                                <td>{{order.quantityPrinted ? order.quantityPrinted : '-'}}</td>
+                                <td>{{order.quantityExpired ? order.quantityExpired : '-'}}</td>
                                 <td>
                                   <span ng-if="order.status === 'New'" class="label label-default">{{order.status}}</span>
                                   <span ng-if="order.status === 'Idle'" class="label label-primary">{{order.status}}</span>

@@ -2,7 +2,11 @@
     "name": "es5-shim",
     "repo": "es-shims/es5-shim",
     "description": "ECMAScript 5 compatibility shims for legacy JavaScript engines",
+<<<<<<< HEAD
+    "version": "v4.5.1",
+=======
     "version": "v4.3.1",
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
     "keywords": [
         "shim",
         "es5",

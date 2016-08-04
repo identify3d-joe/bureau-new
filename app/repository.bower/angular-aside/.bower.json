@@ -42,7 +42,11 @@
     "tag": "1.1.2",
     "commit": "8482de68c95b742e57e2f1d025a1afaa732f5a4a"
   },
+<<<<<<< HEAD
+  "_source": "https://github.com/dbtek/angular-aside.git",
+=======
   "_source": "git://github.com/dbtek/angular-aside.git",
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
   "_target": "1.1.2",
   "_originalSource": "angular-aside"
 }

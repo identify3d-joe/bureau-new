@@ -41,7 +41,11 @@
     "tag": "v1.1.0",
     "commit": "6b998f2f4f06dd9ae96742c745a1c3b71e14cb1c"
   },
+<<<<<<< HEAD
+  "_source": "https://github.com/doshprompt/bower-angular-localization.git",
+=======
   "_source": "git://github.com/doshprompt/bower-angular-localization.git",
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
   "_target": "1.1.0",
   "_originalSource": "angular-localization"
 }

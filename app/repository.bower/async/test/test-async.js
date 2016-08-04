@@ -619,7 +619,11 @@ exports['retry as an embedded task'] = function(test) {
     var retryResult = 'RETRY';
     var fooResults;
     var retryResults;
+<<<<<<< HEAD
+    
+=======
 
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
     async.auto({
         foo: function(callback, results){
             fooResults = results;
@@ -1915,6 +1919,10 @@ exports['doUntil'] = function (test) {
     var count = 0;
     async.doUntil(
         function (cb) {
+<<<<<<< HEAD
+            debugger
+=======
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
             call_order.push(['iterator', count]);
             count++;
             cb();
@@ -2681,20 +2689,36 @@ exports['cargo bulk task'] = function (test) {
 };
 
 exports['cargo drain once'] = function (test) {
+<<<<<<< HEAD
+   
+   var c = async.cargo(function (tasks, callback) {
+      callback();
+    }, 3);
+    
+=======
 
    var c = async.cargo(function (tasks, callback) {
       callback();
     }, 3);
 
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
     var drainCounter = 0;
     c.drain = function () {
       drainCounter++;
     }
+<<<<<<< HEAD
+    
+    for(var i = 0; i < 10; i++){
+      c.push(i);
+    }
+    
+=======
 
     for(var i = 0; i < 10; i++){
       c.push(i);
     }
 
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
     setTimeout(function(){
       test.equal(drainCounter, 1);
       test.done();
@@ -2702,17 +2726,29 @@ exports['cargo drain once'] = function (test) {
 };
 
 exports['cargo drain twice'] = function (test) {
+<<<<<<< HEAD
+    
+    var c = async.cargo(function (tasks, callback) {
+      callback();
+    }, 3);
+    
+=======
 
     var c = async.cargo(function (tasks, callback) {
       callback();
     }, 3);
 
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
     var loadCargo = function(){
       for(var i = 0; i < 10; i++){
         c.push(i);
       }
     };
+<<<<<<< HEAD
+    
+=======
 
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
     var drainCounter = 0;
     c.drain = function () {
       drainCounter++;
@@ -3036,10 +3072,18 @@ exports['queue started'] = function(test) {
 
   var calls = [];
   var q = async.queue(function(task, cb) {});
+<<<<<<< HEAD
+  
+=======
 
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
   test.equal(q.started, false);
   q.push([]);
   test.equal(q.started, true);
   test.done();
 
 };
+<<<<<<< HEAD
+
+=======
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e

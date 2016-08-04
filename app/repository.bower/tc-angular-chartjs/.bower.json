@@ -42,7 +42,11 @@
     "tag": "v1.0.9",
     "commit": "15269c4370dda4d9570daa10cdaebca7226fb71c"
   },
+<<<<<<< HEAD
+  "_source": "https://github.com/carlcraig/tc-angular-chartjs.git",
+=======
   "_source": "git://github.com/carlcraig/tc-angular-chartjs.git",
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
   "_target": "1.0.9",
   "_originalSource": "tc-angular-chartjs"
 }

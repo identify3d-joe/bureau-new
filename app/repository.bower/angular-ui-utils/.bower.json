@@ -11,7 +11,11 @@
     "branch": "bower",
     "commit": "3777381cf274960f8686f5c68aa754c83e137433"
   },
+<<<<<<< HEAD
+  "_source": "https://github.com/angular-ui/ui-utils.git",
+=======
   "_source": "git://github.com/angular-ui/ui-utils.git",
+>>>>>>> c1c898a6954a4adbf196b99c248ec8c10966253e
   "_target": "bower",
   "_originalSource": "angular-ui-utils"
 }

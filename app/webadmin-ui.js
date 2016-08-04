@@ -51,6 +51,7 @@ define([
 	'common/statistics-controller',
 	'common/device-info-controller',
 	'common/assign-order-controller',
+	'common/validator-modal-controller',
 
 	'common/confirmation-dialog-controller'
 
@@ -104,6 +105,7 @@ define([
 		StatisticsController,
 		DeviceInfoController,
 		AssignOrderController,
+		ValidatorModalController,
 
 		ConfirmationDialogController
 	) {
@@ -207,6 +209,7 @@ define([
 		module.controller(StatisticsController);
 		module.controller(DeviceInfoController);
 		module.controller(AssignOrderController);
+		module.controller(ValidatorModalController);
 
 		module.controller(ConfirmationDialogController);
 
@@ -324,9 +327,17 @@ define([
 
 		module.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
 
-			$locationProvider.html5Mode(true);
-
+			// $locationProvider.html5Mode(true);
+			// $locationProvider
+			//   .html5Mode(false)
+			//   .hashPrefix('!');
 			/* routes */
+
+			// $locationProvider.otherwise({
+		  //       redirectTo: '/#/'
+		  //   });
+
+			 $urlRouterProvider.otherwise('/');
 
 			$stateProvider.state('gate', {
 				url: "/",

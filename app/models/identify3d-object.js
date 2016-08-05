@@ -335,6 +335,41 @@ define(['angular', 'settings', 'lodash', 'jquery'], function (_angular, adminApp
       }
 
 
+      Identify3D.prototype.get3DReport = function(uiPage, designId){
+
+        var deferred = $q.defer();
+        var serverPage = uiPage - 1;
+
+        var fn = adminAppSettings.apiFunctions.report;
+
+        var req = {
+          method: 'GET',
+          url: this.serverUri + fn.uri + "/" + designId,
+          params: {
+            // page: serverPage
+          },
+          headers: {
+            'Accept': 'application/json',
+            // 'Authorization': 'Basic am9obkBqb2huLmNvbTpibGE=',
+            // 'Access-Control-Request-Headers': 'X-Requested-With'
+          }
+        };
+
+        $http(req).success(function(data, status, headers, config, statusText){
+          if(status === 200){
+            deferred.resolve(data);
+          } else {
+            deferred.reject(data);
+          }
+
+        }).error(function(data, status, headers, config, statusText){
+          deferred.reject(data);
+        });
+
+        return deferred.promise;
+      }
+
+
       Identify3D.prototype.get3DStats = function(uiPage){
 
         var deferred = $q.defer();

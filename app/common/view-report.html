@@ -1,0 +1,57 @@
+<form cg-busy="{promise:viewReport.myPromise, message:''}" name="Lform" novalidate ng-submit="viewReport.submitForm(Lform)">
+
+    <div class="modal-header">
+        <h3 class="modal-title">Ledger Reports</h3>
+
+        <button style="position:absolute; right:20px; top:20px;" ui-sref="^" class="btn btn-md btn-primary">Done</button>
+
+    </div>
+
+    <div class="modal-body">
+
+        <div class="container-fluid">
+
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="bs-example" data-example-id="simple-table">
+
+                      <div ng-if="!viewReport.reportData.reports || viewReport.reportData.reports.length < 1" class="alert alert-danger" role="alert">
+                          <p>No reports found.</p>
+                      </div>
+
+                        <table ng-if="viewReport.reportData.reports.length > 0" class="table table-bordered">
+                            <thead>
+                               <tr>
+                                   <th>Device ID</th>
+                                   <th>Name</th>
+                                   <th>Date Start</th>
+                                   <th>Date Stop</th>
+                                   <th>Status</th>
+                               </tr>
+                           </thead>
+                            <tbody>
+                                <tr ng-repeat="report in viewReport.reportData.reports">
+                                   <td>{{report.analyticsInfo.deviceID}}</td>
+                                   <td>{{report.analyticsInfo.designFileName}}</td>
+                                   <td>{{report.analyticsInfo.dateStart | date:'medium'}}</td>
+                                   <td>{{report.analyticsInfo.dateStop | date:"medium"}}</td>
+                                   <td>{{report.analyticsInfo.operationStatus}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" ui-sref="^" class="btn btn-md btn-primary">Done</button>
+    </div>
+
+</form>

@@ -52,6 +52,7 @@ define([
 	'common/device-info-controller',
 	'common/assign-order-controller',
 	'common/validator-modal-controller',
+	'common/view-report-controller',
 
 	'common/confirmation-dialog-controller'
 
@@ -106,6 +107,7 @@ define([
 		DeviceInfoController,
 		AssignOrderController,
 		ValidatorModalController,
+		ViewReportController,
 
 		ConfirmationDialogController
 	) {
@@ -210,6 +212,7 @@ define([
 		module.controller(DeviceInfoController);
 		module.controller(AssignOrderController);
 		module.controller(ValidatorModalController);
+		module.controller(ViewReportController);
 
 		module.controller(ConfirmationDialogController);
 
@@ -448,6 +451,47 @@ define([
 								}],
 								deviceDynamicData: ['$q', '$rootScope', '$state', '$stateParams', 'Identify3DObject', function($q, $rootScope, $state, $stateParams, Identify3D){
 									return Identify3D.get3DDevice(0, deviceId);
+								}]
+							}
+						});
+
+						return modalInstance;
+					}]
+				},
+				onEnter: ['$rootScope', '$aside', function($rootScope, $aside){
+				}],
+				onExit: ['$rootScope', 'modalInstance', '$aside', function($rootScope, modalInstance, $aside){
+					modalInstance.close();
+				}]
+			});
+
+
+			$stateProvider.state('identify3D.orders.viewReport', {
+				url: "/report/:orderNumber",
+				resolve: {
+					modalInstance: ['$stateParams', '$aside', 'ordersData', function($stateParams, $aside, ordersData){
+
+						var orderNumber = $stateParams.orderNumber;
+            var orders = ordersData.entries;
+
+						var modalInstance = $aside.open({
+							templateUrl: 'common/view-report.html',
+							placement: 'left',
+							size: 'lg',
+							backdrop: 'static',
+							keyboard: false,
+							controller: 'ViewReportController as viewReport',
+							resolve: {
+								deviceData: ['$q', '$rootScope', '$state', '$stateParams', 'Identify3DObject', function($q, $rootScope, $state, $stateParams, Identify3D){
+
+                  var order = _.findWhere(orders, {'orderNumber': orderNumber});
+
+									return angular.extend({}, order);
+								}],
+								reportData: ['$q', '$rootScope', '$state', '$stateParams', 'Identify3DObject', function($q, $rootScope, $state, $stateParams, Identify3D){
+                  var order = _.findWhere(orders, {'orderNumber': orderNumber});
+                  var designId = order.designId;
+                  return Identify3D.get3DReport(0, designId);
 								}]
 							}
 						});

@@ -4,7 +4,7 @@ define({
   defaultRoutePath: '/',
   version: "0.1.0",
   debug: true,
-  apiEndpoint: 'http://staging.identify3d.net:3030/',
+  apiEndpoint: '',
   apiFunctions: {
     login: {uri: "api/login" },
     ping: {uri: "api/ping" },

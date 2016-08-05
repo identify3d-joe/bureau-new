@@ -53,7 +53,7 @@
                                 <td>
                                   <button ng-show="order.status !== 'Cancelled'" ui-sref=".assign({orderNumber: order.orderNumber})" type="button" class="btn btn-sm btn-primary">Assign</button>
                                   <button ng-click="orders.archiveJob(order.designId)" type="button" class="btn btn-sm btn-default">Archive</button>
-                                  <button ng-click="orders.viewReport(order.designId)" type="button" class="btn btn-sm btn-default">View Reports</button>
+                                  <button ui-sref=".viewReport({orderNumber: order.orderNumber})"  type="button" class="btn btn-sm btn-default">View Reports</button>
                                 </td>
                               </tr>
 

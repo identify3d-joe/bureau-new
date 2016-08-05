@@ -11,5 +11,6 @@ define({
     stats: {uri: "api/dash" },
     orders: {uri: "api/job" },
     devices: {uri: "api/devices" },
+    report: {uri: "api/report" },
   }
 });

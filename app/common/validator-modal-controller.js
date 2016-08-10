@@ -51,6 +51,7 @@ define([], function () {
         self.device = meta.httpStatus === 445 ? false : undefined;
         self.expiration = meta.httpStatus === 451 ? false : undefined;
         self.quantity = meta.httpStatus === 452 ? false : undefined;
+        self.parameterMismatch = meta.parameterMismatch === 454 ? false : undefined;
 
       });
 

@@ -111,7 +111,7 @@
                         <h4><i class="fa fa-print"></i> Required Printer</h4>
                     </div>
 
-                    <div ng-if="assignOrder.deviceDefinitions && assignOrder.deviceDefinitions.length === 0" ng-if="orders.noneFound" class="alert alert-warning" role="alert">
+                    <div ng-if="assignOrder.deviceDefinitions && assignOrder.deviceDefinitions.length === 0" class="alert alert-warning" role="alert">
                         <p>No device requirement provided.</p>
                     </div>
 
@@ -346,10 +346,10 @@
                           ng-if="isObject(dynamicField._value) && dynamicField._value.choice"
                           class="col-md-12"
                         >
-                            <div class="form-group required">
+                            <div class="form-group" ng-class="{ 'has-error' : Lform.{{key+$index}}.$invalid}">
                                 <label for="exampleInputEmail1">
                                     <!-- <span class="label label-xs label-default">{{$index+1}}</span>  -->
-                                    {{dynamicField.name}}{{dynamicField.isRequired ? "*" : ""}}
+                                   {{dynamicField.name}}{{dynamicField.isRequired ? "*" : ""}}
                                 </label>
 
                                 <div class="btn-group input-group" dropdown>
@@ -361,7 +361,12 @@
                                             <a href ng-click="dynamicField.value.value=choice">{{choice}}</a>
                                         </li>
                                     </ul>
-                                    <input type="hidden" name="{{key+$index}}" required ng-model="dynamicField.value.value">
+                                    <input
+                                      type="hidden"
+                                      name="{{key+$index}}"
+                                      ng-required="dynamicField.isRequired"
+                                      ng-model="dynamicField.value.value"
+                                    >
                                 </div>
                             </div>
 
@@ -372,12 +377,20 @@
                           BOOLEAN
                         -->
 
+
+
+<div  class="alert alert-warning" role="alert">
+    <p>{{dynamicField.name}} isRequired? {{dynamicField.isRequired}}</p>
+</div>
+
+
+
                         <div
                           ng-if="dynamicField.dataType === 'boolean'"
                           class="col-md-10"
                         >
 
-                            <div class="form-group required">
+                            <div class="form-group" ng-class="{ 'has-error' : Lform.{{key+$index}}.$invalid}">
                                 <label for="exampleInputEmail1">
                                     <!-- <span class="label label-xs label-default">{{$index+1}}</span>  -->
                                     {{dynamicField.name}}{{dynamicField.isRequired ? "*" : ""}}
@@ -398,7 +411,7 @@
                                     <input
                                       type="hidden"
                                       name="{{key+$index}}"
-                                      required
+                                      ng-required="dynamicField.isRequired"
                                       ng-model="dynamicField.value.value"
                                     >
                                 </div>

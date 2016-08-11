@@ -18,7 +18,7 @@ require.config({
 		'angular-ui-utils': 'repository.bower/angular-ui-utils/ui-utils',
 		'angular-slider': 'repository.bower/angular-slider/slider',
 		'ng-slider': 'repository.bower/ng-slider/dist/ng-slider.min',
-		'angularjs-slider': 'repository.bower/angularjs-slider/rzslider',
+		'angularjs-slider': 'repository.bower/angularjs-slider/dist/rzslider',
 		'angular-chartjs': 'repository.bower/tc-angular-chartjs/dist/tc-angular-chartjs',
 		'angular-aside': 'repository.bower/angular-aside/dist/js/angular-aside',
 		'angular-idle': 'repository.bower/ng-idle/angular-idle',
@@ -119,13 +119,7 @@ require.config({
 				return { moduleId: 'ui.slider'};
 			}
 		},
-		'angularjs-slider': {
-			deps: ['angular'],
-			exports: undefined,
-			init: function angularModuleInfo() {
-				return { moduleId: 'rzModule'};
-			}
-		},
+
 		'angular-chartjs': {
 			deps: ['angular', 'chartjs'],
 			exports: undefined,

@@ -175,7 +175,7 @@ define([
 		_uiUtils.moduleId,
 		_ngCookies.moduleId,
 		_angularSlider.moduleId,
-		_rzSlider.moduleId,
+		'rzModule',
 		_ngAside.moduleId,
 		_ngIdle.moduleId,
 		_ngBusy.moduleId,

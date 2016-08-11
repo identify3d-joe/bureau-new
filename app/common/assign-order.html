@@ -334,9 +334,10 @@
 
                       <div
                         ng-repeat="dynamicField in arr track by $index"
-                        ng-init="dynamicField._value = copy(dynamicField.value)"
+                        ng-init="dynamicField._value = copy(dynamicField.value); dynamicField._fieldType = dynamicField._value.choice ? 'CHOICE' : (dynamicField._value.range ? 'RANGE' : 'VALUE')"
                         class="row"
                       >
+
 
                         <!--
                           CHOICE
@@ -438,7 +439,7 @@ DEBUG:
                             <div class="row">
 
                                 <div
-                                  ng-init="dynamicField._fieldType = dynamicField._value.choice ? 'CHOICE' : (dynamicField._value.range ? 'RANGE' : 'VALUE')"
+
                                   class="col-md-3"
                                 >
                                     <div class="btn-group input-group" dropdown>
@@ -452,13 +453,13 @@ DEBUG:
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li>
-                                                <a href ng-click="dynamicField._fieldType='VALUE'">VALUE</a>
+                                                <a href ng-click="dynamicField._fieldType='VALUE'; dynamicField.value.range=null; dynamicField.value.choice=null">VALUE</a>
                                             </li>
                                             <li>
-                                                <a href ng-click="dynamicField._fieldType='RANGE'">RANGE</a>
+                                                <a href ng-click="dynamicField._fieldType='RANGE'; dynamicField.value.value=null; dynamicField.value.choice=null">RANGE</a>
                                             </li>
                                             <!-- <li>
-                                                <a href ng-click="dynamicField._fieldType='CHOICE'">CHOICE</a>
+                                                <a href ng-click="dynamicField._fieldType='CHOICE'; dynamicField.value.value=null; dynamicField.value.range=null">CHOICE</a>
                                             </li> -->
                                         </ul>
                                     </div>
@@ -523,11 +524,10 @@ DEBUG:
                                       <rzslider
                                         rz-slider-model="dynamicField.value.range.min"
                                         rz-slider-high="dynamicField.value.range.max"
-                                        rz-slider-precision="0.1"
-                                        rz-slider-step="1"
                                         rz-slider-floor="dynamicField._value.range.min"
                                         rz-slider-ceil="dynamicField._value.range.max"
-                                        rz-slider-hide-limit-labels="true">
+                                        rz-slider-options="assignOrder.createSliderOptions(dynamicField)"
+                                        >
                                       </rzslider>
 
                                   </div>
@@ -559,21 +559,45 @@ DEBUG:
                                   </div>
                                 </span>
 
-                                <!-- PREDEFINED VALUE -->
+                                <!-- PREDEFINED VALUE (range) -->
                                 <span
-                                  ng-if="dynamicField.dataType !== 'string' && dynamicField._fieldType === 'VALUE' && dynamicField._value.value"
+                                  ng-if="dynamicField.dataType !== 'string' && dynamicField.value.$range && dynamicField._fieldType === 'VALUE' && dynamicField._value.value"
                                 >
                                   <div class="col-md-9">
+                                    !!!
                                       <rzslider
                                         rz-slider-model="dynamicField.value.value"
-                                        rz-slider-precision="0.1"
-                                        rz-slider-step="1"
                                         rz-slider-floor="dynamicField.value.$range.min"
                                         rz-slider-ceil="dynamicField.value.$range.max"
-                                        rz-slider-hide-limit-labels="true">
+                                        rz-slider-options="assignOrder.createSliderOptions(dynamicField)"
+                                      >
                                       </rzslider>
                                   </div>
                                 </span>
+
+                                <!-- PREDEFINED VALUE (single value) -->
+                                <span
+                                  ng-if="dynamicField.dataType !== 'string' && !dynamicField.value.$range && dynamicField._fieldType === 'VALUE' && dynamicField._value.value"
+                                >
+                                <div class="col-md-4">
+                                    <div class="form-group" ng-class="{ 'has-error' : Lform.{{key+$index}}.$invalid}">
+                                        <label for="exampleInputEmail1">
+                                            Value{{dynamicField.isRequired ? "*" : ""}}
+                                        </label>
+                                        <input
+                                          type="text"
+                                          class="form-control"
+                                          id="exampleInputEmail1"
+                                          placeholder="Value"
+                                          name="{{key+$index}}"
+                                          ng-required="dynamicField.isRequired"
+                                          ng-model="dynamicField.value.value"
+                                          ng-disabled="!dynamicField.isEditable"
+                                        >
+                                    </div>
+                                </div>
+                                </span>
+
 
                                 <!-- CHOICE -->
                                 <div ng-if="dynamicField._fieldType === 'CHOICE'" class="col-md-4">
@@ -589,6 +613,17 @@ DEBUG:
                             </div>
 
                         </div>
+
+
+<div
+  class="col-md-12"
+>
+
+  <div  class="alert alert-warning" role="alert">
+     <pre>{{dynamicField.name}} {{assignOrder.stringify(dynamicField,null,"   ")}}</pre>
+ </div>
+
+</div>
 
 
                       </div>

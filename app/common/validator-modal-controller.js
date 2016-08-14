@@ -17,6 +17,7 @@ define([], function () {
     self.device = true;
     self.expiration = true;
     self.quantity = true;
+    self.parameterMismatch = true;
 
     self.success = false;
 
@@ -32,11 +33,11 @@ define([], function () {
 
         self.status = true;
         self.certificate = true;
+
         self.device = true;
         self.expiration = true;
         self.quantity = true;
-
-
+        self.parameterMismatch = true;
 
       },function(meta){
 
@@ -46,18 +47,30 @@ define([], function () {
         self.isWorking = false;
 
         self.status = false;
-        self.certificate = false;
 
-        self.device = meta.httpStatus === 445 ? false : undefined;
-        self.expiration = meta.httpStatus === 451 ? false : undefined;
-        self.quantity = meta.httpStatus === 452 ? false : undefined;
+        var s = meta.httpStatus;
+
+        if (s !== 445 &&
+            s !== 451 &&
+            s !== 452 &&
+            s !== 454 &&
+            s !== 200
+        ) {
+          self.certificate = false;
+        } else {
+          // certificate is catch all
+          // if none of above fail, we assume certificate pass
+          self.certificate = true;
+        }
+
+        self.device = s === 445 ? false : undefined;
+        self.expiration = s === 451 ? false : undefined;
+        self.quantity = s === 452 ? false : undefined;
+        self.parameterMismatch = s === 454 ? false : undefined;
 
       });
 
-
-    }, 1400);
-
-
+    }, 1700);
 
     self.ok = function(e) {
       $modalInstance.close();

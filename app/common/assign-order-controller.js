@@ -260,6 +260,23 @@ define([], function () {
       fit: 'Fit',
       crop: 'Crop'
     }
+
+    self.createSliderOptions = function(field, floor, ceil) {
+
+      var opts = {
+        // floor: floor,
+        // ceil: ceil,
+        disabled: !field.isEditable,
+        hideLimitLabels: true,
+        step: 1,
+        precision: 3,
+      };
+      return opts
+    }
+
+    self.stringify = JSON.stringify;
+
+
   }
 
   return {'AssignOrderController': ['$window', '$q','$scope', '$rootScope', '$stateParams', '$state', '$modal', '$aside', '$modalInstance', 'Identify3DObject', 'orderData', 'devicesData', 'confirmationDialogService', 'orderFormData', AssignOrderController]};

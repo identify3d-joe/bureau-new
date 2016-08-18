@@ -4,6 +4,7 @@ define({
   defaultRoutePath: '/',
   version: "0.1.0",
   debug: true,
+  apiEndpoint: 'http://demo1.identify3d.net:2000/',
   apiFunctions: {
     login: {uri: "api/login" },
     ping: {uri: "api/ping" },

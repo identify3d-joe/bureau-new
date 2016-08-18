@@ -275,7 +275,7 @@
 
                             <div class="form-group" ng-class="{ 'has-error' : Lform.quantityAuthorized.$invalid}">
                                 <label for="exampleInputEmail1">Quantity</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Quantity" name="quantityAuthorized" ng-model="assignOrder.orderForm.BusinessRules.quantityAuthorized">
+                                <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Quantity" name="quantityAuthorized" ng-model="assignOrder.orderForm.BusinessRules.quantityAuthorized">
                             </div>
 
                         </div>
@@ -480,7 +480,7 @@ DEBUG:
                                               >min {{dynamicField._value.range.min}}</span>
                                           </label>
                                           <input
-                                            type="text"
+                                            type="number"
                                             class="form-control"
                                             id="exampleInputEmail1"
                                             placeholder="Low"
@@ -501,7 +501,7 @@ DEBUG:
                                               >max {{dynamicField._value.range.max}}</span>
                                           </label>
                                           <input
-                                            type="text"
+                                            type="number"
                                             class="form-control"
                                             id="exampleInputEmail1"
                                             placeholder="High"
@@ -546,7 +546,19 @@ DEBUG:
                                               Value{{dynamicField.isRequired ? "*" : ""}}
                                           </label>
                                           <input
+                                            ng-if="dynamicField.dataType !== 'integer'"
                                             type="text"
+                                            class="form-control"
+                                            id="exampleInputEmail1"
+                                            placeholder="Value"
+                                            name="{{key+$index}}"
+                                            ng-required="dynamicField.isRequired"
+                                            ng-model="dynamicField.value.value"
+                                            ng-disabled="!dynamicField.isEditable"
+                                          >
+                                          <input
+                                            ng-if="dynamicField.dataType === 'integer'"
+                                            type="number"
                                             class="form-control"
                                             id="exampleInputEmail1"
                                             placeholder="Value"
@@ -564,7 +576,7 @@ DEBUG:
                                   ng-if="dynamicField.dataType !== 'string' && dynamicField.value.$range && dynamicField._fieldType === 'VALUE' && dynamicField._value.value"
                                 >
                                   <div class="col-md-9">
-                                    !!!
+
                                       <rzslider
                                         rz-slider-model="dynamicField.value.value"
                                         rz-slider-floor="dynamicField.value.$range.min"

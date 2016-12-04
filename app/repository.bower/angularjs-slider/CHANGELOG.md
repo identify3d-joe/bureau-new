@@ -1,3 +1,58 @@
+# 5.8.7 (2016-11-09)
+## Fix
+- Add Math.round for positions and dimensions - thanks to @DmitryKrekota (#454)
+
+# 5.8.6 (2016-11-08)
+## Fix
+- Apply the pushRange with maxRange - thanks to @GuilloOme (#456)
+
+# 5.8.5 (2016-11-05)
+## Fix
+- Fix overlapping max and ceil labels in some cases (#396)
+
+# 5.8.4 (2016-11-05)
+## Improvement
+- Refactor autoHiding algorithm for labels (fix #446)
+
+# 5.8.3 (2016-11-03)
+## Improvement
+- Generate a SCSS file (simple copy of the css file) in the dist folder so it can be imported (#449)
+
+# 5.8.2 (2016-11-03)
+## Fix
+- Fix ceil label positioning (#448)
+
+# 5.8.1 (2016-10-27)
+## Fix
+- Enable using with Browserify (#436)
+
+# 5.8.0 (2016-10-22)
+## Features
+- Handle Date object in stepsArray (#424 )
+
+## Fixes
+- Fix style for disabled range slider and ticks (#394)
+- Fix slider goes back when moved and scaled (#346)
+
+# 5.7.0 (2016-10-16)
+## Features
+- Add a `logScale` option to display the slider using a logarithmic scale (#280).
+- Add `customValueToPosition` and `customPositionToValue` options to display the slider using a custom scale (#280).
+
+# 5.6.0 (2016-10-16)
+## Features
+- Add a `ticksArray` option to display ticks at specific positions (#426).
+
+To enable this new feature, the way the ticks are rendered has been changed. Now each tick is positioned absolutely using a `transform: translate()` instruction.
+
+# 5.5.1 (2016-09-22)
+## Fix
+- Prevent losing focus when slider is rerendered (#415).
+
+# 5.5.0 (2016-09-06)
+## Features
+- Add an `autoHideLimitLabels` to disable the auto-hiding of limit labels (#405).
+
 # 5.4.3 (2016-08-07)
 ## Fix
 - Fix minLimit/maxLimit bugged for draggableRange (#384).

@@ -527,14 +527,10 @@ DEBUG:
                                 >
 
                                   <div class="col-md-9">
-                                    {{dynamicField.value}}
-                                    {{dynamicField._value}}
                                       <rzslider
                                         rz-slider-model="dynamicField.value.range.min"
                                         rz-slider-high="dynamicField.value.range.max"
-                                        rz-slider-floor="dynamicField._value.range.min"
-                                        rz-slider-ceil="dynamicField._value.range.max"
-                                        rz-slider-options="assignOrder.createSliderOptions(dynamicField)"
+                                        rz-slider-options="assignOrder.createSliderOptions(dynamicField, dynamicField._value.range.min, dynamicField._value.range.max)"
                                         >
                                       </rzslider>
 
@@ -587,11 +583,10 @@ DEBUG:
 
                                       <rzslider
                                         rz-slider-model="dynamicField.value.value"
-                                        rz-slider-floor="dynamicField.value.$range.min"
-                                        rz-slider-ceil="dynamicField.value.$range.max"
-                                        rz-slider-options="assignOrder.createSliderOptions(dynamicField)"
-                                      >
+                                        rz-slider-options="assignOrder.createSliderOptions(dynamicField, dynamicField.value.$range.min, dynamicField.value.$range.max)"
+                                        >
                                       </rzslider>
+
                                   </div>
                                 </span>
 

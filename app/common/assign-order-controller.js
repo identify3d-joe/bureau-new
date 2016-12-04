@@ -20,6 +20,14 @@ define([], function () {
 
     self.orderForm = angular.extend({}, orderFormData);
 
+    function broadcastSliderRecalc() {
+      setTimeout(function(){
+          $scope.$broadcast('reCalcViewDimensions');
+      }, 10);
+    }
+
+    broadcastSliderRecalc();
+
     function parseISOLocal(s) {
       var b = s.split(/\D/);
       return new Date(b[0], b[1]-1, b[2], b[3], b[4], b[5]);
@@ -282,8 +290,8 @@ define([], function () {
     self.createSliderOptions = function(field, floor, ceil) {
 
       var opts = {
-        // floor: floor,
-        // ceil: ceil,
+        floor: floor,
+        ceil: ceil,
         disabled: !field.isEditable,
         hideLimitLabels: true,
         step: 1,

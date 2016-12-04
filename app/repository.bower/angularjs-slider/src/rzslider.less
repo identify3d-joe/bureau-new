@@ -30,6 +30,18 @@
       cursor: not-allowed;
       background-color: @handleDisabledColor;
     }
+    .rz-bar-wrapper.rz-draggable {
+      cursor: not-allowed;
+    }
+    .rz-bar.rz-selection {
+      background: @barDisabledFillColor;
+    }
+    .rz-ticks .rz-tick {
+      cursor: not-allowed;
+      &.rz-selected {
+        background: @barDisabledFillColor;
+      }
+    }
   }
 
   span {
@@ -98,7 +110,7 @@
     &:hover:after {
       background-color: @handleHoverColor;
     }
-    &.rz-active{
+    &.rz-active {
       z-index: 4;
       &:after {
         background-color: @handleActiveColor;
@@ -127,15 +139,8 @@
     left: 0;
     top: -(@ticksHeight - @barDimension) / 2;
     margin: 0;
-    padding: 0 (@handleSize - @ticksWidth) / 2;
     z-index: 1;
     list-style: none;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
 
     .rz-tick {
       text-align: center;
@@ -144,6 +149,10 @@
       height: @ticksHeight;
       background: @ticksColor;
       border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin-left: @handleSize / 2 - @ticksWidth / 2; // for centering
       &.rz-selected {
         background: @selectedTicksColor;
       }
@@ -164,7 +173,7 @@
     &.rz-ticks-values-under {
       .rz-tick-value {
         top: initial;
-        bottom: @ticksValuePosition - 10;
+        bottom: @ticksValuePosition - 2;
       }
     }
   }
@@ -220,14 +229,12 @@
       width: 0;
       left: -(@ticksHeight - @barDimension) / 2;
       top: 0;
-      padding: (@handleSize - @ticksWidth) / 2 0;
       z-index: 1;
-      -webkit-flex-direction: column-reverse;
-      -ms-flex-direction: column-reverse;
-      flex-direction: column-reverse;
 
       .rz-tick {
         vertical-align: middle;
+        margin-left: auto;
+        margin-top: @handleSize / 2 - @ticksWidth / 2; // for centering
         .rz-tick-value {
           left: @ticksValuePositionOnVertical;
           top: initial;
@@ -246,7 +253,7 @@
         .rz-tick-value {
           bottom: initial;
           left: initial;
-          right: @ticksValuePositionOnVertical - 10;
+          right: @ticksValuePositionOnVertical;
         }
       }
     }

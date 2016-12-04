@@ -1,4 +1,4 @@
-## AngularJS slider directive with no external dependencies
+## AngularJS 1.X slider directive with no external dependencies
 
 Status:
 [![npm version](https://img.shields.io/npm/v/angularjs-slider.svg?style=flat-square)](https://www.npmjs.com/package/angularjs-slider)
@@ -11,7 +11,7 @@ Links:
 [![Join the chat at https://gitter.im/rzajac/angularjs-slider](https://img.shields.io/badge/GITTER-join%20chat-1dce73.svg?style=flat-square)](https://gitter.im/rzajac/angularjs-slider?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-Slider directive implementation for AngularJS, without any dependencies: [http://angular-slider.github.io/angularjs-slider](http://angular-slider.github.io/angularjs-slider/index.html).
+Slider directive implementation for AngularJS 1.X, without any dependencies: [http://angular-slider.github.io/angularjs-slider](http://angular-slider.github.io/angularjs-slider/index.html).
 
 - Mobile friendly
 - Fast
@@ -214,11 +214,13 @@ The default options are:
     showSelectionBarFromValue: null,
     hidePointerLabels: false,
     hideLimitLabels: false,
+    autoHideLimitLabels: true,
     readOnly: false,
     disabled: false,
     interval: 350,
     showTicks: false,
     showTicksValues: false,
+    ticksArray: null,
     ticksTooltip: null,
     ticksValuesTooltip: null,
     vertical: false,
@@ -237,7 +239,10 @@ The default options are:
     rightToLeft: false,
     boundPointerLabels: true,
     mergeRangeLabelsIfSame: false,
-    customTemplateScope: null
+    customTemplateScope: null,
+    logScale: false,
+    customValueToPosition: null,
+    customPositionToValue: null
 }
 ````
 
@@ -296,12 +301,14 @@ $scope.slider = {
 **stepsArray** - _Array_: If you want to display a slider with non linear/number steps.
 Just pass an array with each slider value and that's it; the floor, ceil and step settings of the slider will be computed automatically. By default, the `rz-slider-model` and `rz-slider-high` values will be the value of the selected item in the stepsArray. They can also be bound to the index of the selected item by setting the `bindIndexForStepsArray` option to `true`.
 
-`stepsArray` can also be an array of objects like:
+`stepsArray` can also be an array of objects or Dates like:
 
 ```js
 [
   {value: 'A'}, // the display value will be *A*
-  {value: 10, legend: 'Legend for 10'} // the display value will be 10 and a legend will be displayed under the corresponding tick.
+  {value: 10, legend: 'Legend for 10'}, // the display value will be 10 and a legend will be displayed under the corresponding tick.
+  new Date(2016, 7, 12), // the display value will be the default format of Date. To customize it, use the `translate` option
+  {value: new Date(2016, 7, 12), legend: 'Legend for 10'} // same as above but with a legend
 ]
 ````
 
@@ -327,15 +334,19 @@ Just pass an array with each slider value and that's it; the floor, ceil and ste
 
 **hideLimitLabels** - _Boolean (defaults to false)_: Set to true to hide min / max labels
 
+**autoHideLimitLabels** - _Boolean (defaults to true)_: Set to false to disable the auto-hiding behavior of the limit labels.
+
 **readOnly** - _Boolean (defaults to false)_: Set to true to make the slider read-only.
 
 **disabled** - _Boolean (defaults to false)_: Set to true to disable the slider.
 
 **interval** - _Number in ms (defaults to 350)_: Internally, a `throttle` function (See http://underscorejs.org/#throttle) is used when the model or high values of the slider are changed from outside the slider. This is to prevent from re-rendering the slider too many times in a row. `interval` is the number of milliseconds to wait between two updates of the slider.
 
-**showTicks** - _Boolean or Number (defaults to false)_: Set to true to display a tick for each step of the slider. Set an integer to display ticks at intermediate positions.
+**showTicks** - _Boolean or Number (defaults to false)_: Set to true to display a tick for each step of the slider. Set a number to display ticks at intermediate positions. This number corresponds to the step between each tick.
 
-**showTicksValues** - _Boolean or Number (defaults to false)_: Set to true to display a tick and the step value for each step of the slider. Set an integer to display ticks and the step value at intermediate positions.
+**showTicksValues** - _Boolean or Number (defaults to false)_: Set to true to display a tick and the step value for each step of the slider. Set a number to display ticks and the step value at intermediate positions. This number corresponds to the step between each tick.
+
+**ticksArray** - _Array (defaults to null)_: Use to display ticks at specific positions. The array contains the index of the ticks that should be displayed. For example, [0, 1, 5] will display a tick for the first, second and sixth values.
 
 **ticksTooltip** - _Function(value) (defaults to null)_: (requires angular-ui bootstrap) Used to display a tooltip when a tick is hovered. Set to a function that returns the tooltip content for a given value.
 
@@ -375,6 +386,15 @@ _Changing this value at runtime is not currently supported._
   - End: maximum value
 
 **customTemplateScope** - _Object (default to null)_: The properties defined in this object will be exposed in the slider template under `custom.X`.
+
+**logScale** - _Boolean (defaults to false)_: Set to true to use a logarithmic scale to display the slider.
+
+For custom scales:
+
+**customValueToPosition** - _Function(val, minVal, maxVal): percent_: Function that returns the position on the slider for a given value. The position must be a percentage between 0 and 1.
+
+**customPositionToValue** - _Function(percent, minVal, maxVal): value_: Function that returns the value for a given position on the slider. The position is a percentage between 0 and 1.
+
 
 ## Change default options
 If you want the change the default options for all the sliders displayed in your application, you can set them using the `RzSliderOptions.options()` method:

@@ -11,10 +11,12 @@ define([
 	'angular-ui-bootstrap',
 	'angular-ui-utils',
 	'angular-cookies',
+	'angular-touch',
 
 	'angular-slider',
 	'ng-slider',
 	'angularjs-slider',
+	// 'venturocket-angular-slider',
 
 	'angular-aside',
 	'angular-idle',
@@ -66,10 +68,12 @@ define([
 		_uiBootstrap,
 		_uiUtils,
 		_ngCookies,
+		_ngTouch,
 
 		_angularSlider,
 		_ngSlider,
 		_rzSlider,
+		// _vrSlider,
 
 		_ngAside,
 		_ngIdle,
@@ -174,7 +178,9 @@ define([
 		_uiBootstrap.moduleId,
 		_uiUtils.moduleId,
 		_ngCookies.moduleId,
+		// _ngTouch.moduleId,
 		_angularSlider.moduleId,
+		// _vrSlider.moduleId,
 		'rzModule',
 		_ngAside.moduleId,
 		_ngIdle.moduleId,

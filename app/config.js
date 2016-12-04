@@ -12,6 +12,7 @@ require.config({
 		'angular-sanitize': 'repository.bower/angular-sanitize/angular-sanitize',
 		'angular-cookies': 'repository.local/angular-cookies/angular-cookies',
 		'angular-animate': 'repository.bower/angular-animate/angular-animate',
+		'angular-touch': 'repository.bower/angular-touch/angular-touch',
 		'angular-ui-router': 'repository.bower/angular-ui-router/release/angular-ui-router',
 		'angular-loading-bar': 'repository.bower/angular-loading-bar/build/loading-bar',
 		'angular-ui-bootstrap': 'repository.bower/angular-bootstrap/ui-bootstrap-tpls',
@@ -39,7 +40,8 @@ require.config({
 		'angular-file-upload': 'repository.bower/angular-file-upload/angular-file-upload',
 		'ng-image-cropper': 'repository.local/ng-image-cropper/dist/angular-image-cropper',
 		'ez-plus': 'repository.bower/ez-plus/src/jquery.ez-plus',
-		'ng-ez-plus': 'repository.bower/angular-ez-plus/js/angular-ezplus'
+		'ng-ez-plus': 'repository.bower/angular-ez-plus/js/angular-ezplus',
+		'venturocket-angular-slider': 'repository.bower/venturocket-angular-slider/build/angular-slider'
 	},
 
 	bundles: {},
@@ -77,6 +79,13 @@ require.config({
 			exports: undefined,
 			init: function angularModuleInfo() {
 				return { moduleId: 'ngAnimate'};
+			}
+		},
+		'angular-touch': {
+			deps: ['angular'],
+			exports: undefined,
+			init: function angularModuleInfo() {
+				return { moduleId: 'ngTouch'};
 			}
 		},
 		'angular-ui-router': {
@@ -169,6 +178,13 @@ require.config({
 			exports: undefined,
 			init: function angularModuleInfo() {
 				return { moduleId: 'ez-plus' };
+			}
+		},
+		'venturocket-angular-slider': {
+			deps: ['angular', 'jquery', 'angular-touch'],
+			exports: undefined,
+			init: function angularModuleInfo() {
+				return { moduleId: 'vr.directives.slider' };
 			}
 		}
 	},

@@ -21,12 +21,20 @@ define([], function () {
 
     self.success = false;
 
+    self.downloadURLData = null;
+
 
     setTimeout(function(){
 
       serverResponse.serverResponse.then(function(fileData){
 
-        console.log("succ", fileData);
+
+        self.downloadURLData = angular.extend({}, fileData);
+
+        self.downloadURLData.url = Identify3D.getDownloadUri(fileData);
+
+        console.log("succ", fileData, self.downloadURLData);
+
 
         self.success = true;
         self.isWorking = false;

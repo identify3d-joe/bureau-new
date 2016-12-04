@@ -37,7 +37,9 @@ require.config({
 		"text": 'repository.bower/requirejs-text/text',
 		"q": 'repository.bower/q/q',
 		'angular-file-upload': 'repository.bower/angular-file-upload/angular-file-upload',
-		'ng-image-cropper': 'repository.local/ng-image-cropper/dist/angular-image-cropper'
+		'ng-image-cropper': 'repository.local/ng-image-cropper/dist/angular-image-cropper',
+		'ez-plus': 'repository.bower/ez-plus/src/jquery.ez-plus',
+		'ng-ez-plus': 'repository.bower/angular-ez-plus/js/angular-ezplus'
 	},
 
 	bundles: {},
@@ -160,6 +162,13 @@ require.config({
 			exports: undefined,
 			init: function angularModuleInfo() {
 				return { moduleId: 'icheck' };
+			}
+		},
+		'ng-ez-plus': {
+			deps: ['angular', 'jquery', 'ez-plus'],
+			exports: undefined,
+			init: function angularModuleInfo() {
+				return { moduleId: 'ez-plus' };
 			}
 		}
 	},

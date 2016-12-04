@@ -83,6 +83,11 @@ define(['lodash'], function (_) {
         // console.log("keepalive")
     })
 
+    //uploader
+
+    var uploader = self.uploader = Identify3D.uploader(/*currentClinic.unique_id*/);
+
+
   }
 
   return {'MasterController': ['$scope', '$stateParams', '$rootScope', '$state', '$modal', 'currentUser', 'statsData', 'Identify3DObject', MasterController]};

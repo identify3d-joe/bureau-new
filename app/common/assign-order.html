@@ -22,14 +22,21 @@
 
                     <div class="row">
 
-                        <div class="col-md-12">
+                        <div ng-show="assignOrder.imageEditor" class="col-md-12">
 
-                            <image-cropper image-url="{{assignOrder.order.imageUrl || 'media/product-placeholder.png'}}" width="10" height="10" show-controls="true" fit-on-init="true" center-on-init="true" action-labels="assignOrder.myButtonLabels" />
+                            <image-cropper image-url="{{assignOrder.order.imageUrl || 'media/product-placeholder.png'}}" width="500" height="400" show-controls="true" fit-on-init="true" center-on-init="true" action-labels="assignOrder.myButtonLabels" />
 
-                            <!-- <img ng-src="{{'media/product-placeholder.png'}}" class="inline-inspiration-photo center-block"> -->
+                            <button type="button" href ng-click="assignOrder.imageEditor=false" class=" btn btn-sm btn-primary">Hide Image Editor</button>
 
                         </div>
 
+                        <div ng-show="!assignOrder.imageEditor" class="col-md-12">
+
+                            <img ng-show="!assignOrder.imageEditor" ng-src="{{assignOrder.order.imageUrl || 'media/product-placeholder.png'}}" class="inline-inspiration-photo">
+
+                            <button type="button" href ng-click="assignOrder.imageEditor=true" class=" btn btn-sm btn-primary">Show Image Editor</button>
+
+                        </div>
 
                     </div>
 
@@ -286,7 +293,7 @@
                                 <label for="exampleInputEmail1">Expiration Date</label>
 
                                 <p class="input-group input-group-md">
-                                    <input type="text" class="form-control" datepicker-popup="MM / dd / yyyy" datepicker-mode="year" ng-model="assignOrder.orderForm.BusinessRules.expirationDate" name="expirationDate" is-open="assignOrder.isDOBCalOpen" placeholder="Expiration Date" close-text="Close"
+                                    <input ng-disabled="assignOrder.orderForm.BusinessRules.expirationDate" type="text" class="form-control" datepicker-popup="MM / dd / yyyy" datepicker-mode="year" ng-model="assignOrder.orderForm.BusinessRules.expirationDate" name="expirationDate" is-open="assignOrder.isDOBCalOpen" placeholder="Expiration Date" close-text="Close"
                                     />
                                     <span class="input-group-btn">
                                       <button type="button" class="btn btn-default" ng-click="assignOrder.openDOBCal($event)"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -305,7 +312,7 @@
 
                             <div class="form-group" ng-class="{ 'has-error' : Lform.authorizedUser.$invalid}">
                                 <label for="exampleInputEmail1">Authorized User</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Authorized User" name="authorizedUser" ng-model="assignOrder.orderForm.BusinessRules.authorizedUser">
+                                <input ng-disabled="assignOrder.orderForm.BusinessRules.authorizedUser" type="text" class="form-control" id="exampleInputEmail1" placeholder="Authorized User" name="authorizedUser" ng-model="assignOrder.orderForm.BusinessRules.authorizedUser">
                             </div>
 
                         </div>
@@ -520,7 +527,8 @@ DEBUG:
                                 >
 
                                   <div class="col-md-9">
-
+                                    {{dynamicField.value}}
+                                    {{dynamicField._value}}
                                       <rzslider
                                         rz-slider-model="dynamicField.value.range.min"
                                         rz-slider-high="dynamicField.value.range.max"
@@ -626,7 +634,7 @@ DEBUG:
 
                         </div>
 
-<!-- 
+<!--
 <div
   class="col-md-12"
 >

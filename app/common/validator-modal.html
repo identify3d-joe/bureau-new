@@ -135,7 +135,8 @@
     </div>
 
     <div ng-if="!validatorModal.isWorking" class="modal-footer">
-        <button ng-if="validatorModal.success === true" type="button" ng-click="validatorModal.ok()" class="btn btn-md btn-success">OK</button>
+        <a href="{{validatorModal.downloadURLData.url}}" download="{{validatorModal.downloadURLData.fileName || 'design'}}" ng-if="validatorModal.success === true && validatorModal.downloadURLData" class="btn btn-md btn-success">Download {{validatorModal.downloadURLData.fileName}}</a>
+        <button ng-if="validatorModal.success === true" type="button" ng-click="validatorModal.ok()" class="btn btn-md btn-primary">Close</button>
         <button ng-if="validatorModal.success === false" type="button" ng-click="validatorModal.cancel()" class="btn btn-md btn-warning">Dismiss</button>
     </div>
 

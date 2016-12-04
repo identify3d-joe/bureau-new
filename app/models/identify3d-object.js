@@ -564,6 +564,43 @@ define(['angular', 'settings', 'lodash', 'jquery'], function (_angular, adminApp
         return deferred.promise;
       }
 
+      Identify3D.prototype.uploader = function(clinicId){
+
+        var token = this.authToken();
+
+        var uploader = new FileUploader({
+                   url: this.serverUri + "api/upload",
+                  //  queueLimit: 1,
+                   alias: 'file',
+                   headers: {
+                       'Authorization': "Basic " + token,
+                   },
+                  //  formData: [{ 'clinic_id': clinicId }],
+                   autoUpload: true,
+                   removeAfterUpload: true
+               });;
+
+        // FILTERS
+
+        uploader.filters.push({
+             name: 'imageFilter',
+             fn: function(item /*{File|FileLikeObject}*/, options) {
+                 var parts = item.name.split('.');
+                 var ext = parts[parts.length-1];
+                 return ext === 'id3';
+             }
+         });
+
+         // EVENTS
+
+         uploader.onAfterAddingFile = function(fileItem) {
+           uploader.queue.length !== 1 && uploader.queue.shift(); // only one file in the queue
+         };
+
+        return uploader;
+      }
+
+
       function getFormData (object) {
 
         var fd = new FormData();
